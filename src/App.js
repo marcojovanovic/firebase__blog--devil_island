@@ -1,14 +1,13 @@
-
+import React from 'react';
 import './App.css';
-import {auth} from './firebase/config'
-
+import { DevilContext } from './context';
 
 function App() {
-  return (
-    <div className="App">
-     hello there
-    </div>
-  );
+  const data = React.useContext(DevilContext);
+
+  console.log(data);
+
+  return <div className="App">hello there</div>;
 }
 
 export default App;
