@@ -14,6 +14,8 @@ import Home from './components/Home';
 
 import RedirectPage from './components/RedirectPage'
 import CreateBlog from './components/CreateBlog';
+import UpdateBlog from './components/UpdateBlog';
+import SingleBlogPage from './components/SingleBlogPage';
 
 
 function App() {
@@ -34,7 +36,10 @@ function App() {
             <CreateBlog /> 
           </Route>
          <Route exact path="/updateBlog/:id">
-            <CreateBlog /> 
+            <UpdateBlog /> 
+          </Route>
+         <Route exact path="/singleBlogPage/:id">
+            <SingleBlogPage /> 
           </Route>
           <Route exact path="/signUp">
             <SignUp />

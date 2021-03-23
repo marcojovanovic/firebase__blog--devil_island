@@ -15,6 +15,8 @@ const DevilProvider = ({ children }) => {
  
   const [updateBlog, setUpdateBlog]=useState(false) 
 
+  const [singleBlog, setSingleBlog]=useState('')
+
   const history = useHistory()
 
 
@@ -111,7 +113,9 @@ const handleUpdateBlog = () =>{
         handleChangeBlog,
         blogCollection,
         setUpdateBlog,
-        updateBlog
+        updateBlog,
+        singleBlog,
+        setSingleBlog
       }}
     >
       {children}

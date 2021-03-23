@@ -1,11 +1,14 @@
 import React from 'react';
 import { auth} from '../firebase/config';
 import { DevilContext } from '../context';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter, Redirect, useParams } from 'react-router-dom';
 
 
-function CreateBlog(props) {
+function UpdateBlog(props) {
   let { history } = props;
+  let { id } = useParams(); 
+  
+
 
   const { user, setUser, username, isLogged, handleSubmitBlog, handleChangeBlog, updateBlog } = React.useContext(DevilContext);
 
@@ -33,7 +36,7 @@ function CreateBlog(props) {
         Sign Out
       </button>
 
-      <h1 className='text-center'>Napravi Blog</h1>
+      <h1 className='text-center'>Izmeni Blog</h1>
 
       <div className="form-container">
         <form className="form" onSubmit={handleSubmitBlog}>
@@ -90,4 +93,4 @@ function CreateBlog(props) {
   );
 }
 
-export default withRouter(CreateBlog);
+export default withRouter(UpdateBlog);
