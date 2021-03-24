@@ -1,12 +1,10 @@
-import React,{useEffect} from 'react'
+import React, { useEffect } from 'react';
 import { DevilContext } from '../context';
 import { withRouter, Redirect, useParams } from 'react-router-dom';
 import { database } from '../firebase/config';
 
-
 function SingleBlogPage() {
-
-  let { id } = useParams(); 
+  let { id } = useParams();
   const {
     user,
     setUser,
@@ -17,36 +15,32 @@ function SingleBlogPage() {
     blogCollection,
     setUpdateBlog,
     singleBlog,
-    setSingleBlog
-    
+    setSingleBlog,
   } = React.useContext(DevilContext);
 
+  useEffect(() => {
+    database
+      .collection('blogPost')
+      .doc(id)
+      .get()
+      .then((snap) => {
+        setSingleBlog(snap.data());
+      });
 
+      
 
-    useEffect(() => {
-      database.collection('blogPost').doc(id).get().then(snap=>{
+  }, [id]);
 
-
-          
-
-            setSingleBlog(snap.data())
-
-
-      }) 
-    }, []);
-
-    console.log(singleBlog)
-
-    const {autor, sadrzaj, naslov, imgURL} = singleBlog
+  const { autor, sadrzaj, naslov, imgURL } = singleBlog;
 
   return (
     <div>
-    <h2>{naslov}</h2>
-                <h4>{sadrzaj}</h4>
-                <img src={imgURL} alt="" />
-                <p>{autor}</p>
-  </div>
-  )
+      <h2>{naslov && naslov}</h2>
+      <h4>{sadrzaj && sadrzaj}</h4>
+      <img src={imgURL} alt="" />
+      <p>{autor && autor}</p>
+    </div>
+  );
 }
 
-export default SingleBlogPage
+export default SingleBlogPage;

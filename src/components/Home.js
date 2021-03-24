@@ -13,35 +13,42 @@ function Home(props) {
     handleSubmitBlog,
     handleChangeBlog,
     blogCollection,
-    setUpdateBlog
-    
+    setUpdateBlog,
   } = React.useContext(DevilContext);
 
-   
-
   let { history } = props;
-
-
-  
-
 
   return (
     <div>
       {blogCollection &&
         blogCollection.map((item) => {
           const { naslov, sadrzaj, imgURL, autor, id } = item;
+
+        
+
           return (
-            <Link to={`/singleBlogPage/${id}`} key={id} className="blogPost__content">
-              <div >
+            <div key={id} className="blogPost__content">
+              <div>
                 <h2>{naslov}</h2>
+
                 <h4>{sadrzaj}</h4>
-                <img src={imgURL} alt="" />
+                <Link to={`/singleBlogPage/${id}`}>
+                  <img src={imgURL} alt="" />
+                </Link>
+
                 <p>{autor}</p>
               </div>
 
-              <button onClick={()=>database.collection('blogPost').doc(id).delete()} className="btn btn-delete">Delete</button>
-              <Link to={`/updateBlog/${id}`} className="btn btn-delete">Update</Link>
-            </Link>
+              <button
+                onClick={() => database.collection('blogPost').doc(id).delete()}
+                className="btn btn-delete"
+              >
+                Delete
+              </button>
+              <Link to={`/updateBlog/${id}`} className="btn btn-delete">
+                Update
+              </Link>
+            </div>
           );
         })}
     </div>

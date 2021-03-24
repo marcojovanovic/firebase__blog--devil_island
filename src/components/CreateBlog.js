@@ -1,13 +1,20 @@
 import React from 'react';
-import { auth} from '../firebase/config';
+import { auth, database } from '../firebase/config';
 import { DevilContext } from '../context';
-import { withRouter, Redirect } from 'react-router-dom';
-
+import { withRouter, Redirect, Link } from 'react-router-dom';
 
 function CreateBlog(props) {
   let { history } = props;
 
-  const { user, setUser, username, isLogged, handleSubmitBlog, handleChangeBlog, updateBlog } = React.useContext(DevilContext);
+  const {
+    user,
+    setUser,
+    username,
+    isLogged,
+    handleChangeBlog,
+    blog,
+    handleSubmitBlog,
+  } = React.useContext(DevilContext);
 
   const handleLogOut = () => {
     if (user) {
@@ -17,23 +24,18 @@ function CreateBlog(props) {
     }
   };
 
-  
-  if(isLogged === false){
- 
-    return <Redirect to='/' />
- 
-   }
-
-   
+  if (isLogged === false) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <div>
-         { user && username}
+      {user && username}
       <button onClick={handleLogOut} type="submit" className="signupbtn">
         Sign Out
       </button>
 
-      <h1 className='text-center'>Napravi Blog</h1>
+      <h1 className="text-center">Napravi Blog</h1>
 
       <div className="form-container">
         <form className="form" onSubmit={handleSubmitBlog}>
@@ -73,19 +75,13 @@ function CreateBlog(props) {
               name="autor"
             />
           </div>
-          
-         <button type="submit" className="btn btn-primary btn-block">
-             Add Post
-          </button> 
-
-
-        
-        
-      
+       
+            <Link to='/' type="submit" className="btn btn-primary btn-block">
+              Add Post
+            </Link>
+       
         </form>
       </div>
-
-
     </div>
   );
 }

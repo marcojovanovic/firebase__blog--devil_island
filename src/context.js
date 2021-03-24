@@ -17,6 +17,8 @@ const DevilProvider = ({ children }) => {
 
   const [singleBlog, setSingleBlog]=useState('')
 
+  const [updateSingleBlog, setUpdateSingleBlog]=useState('')
+
   const history = useHistory()
 
 
@@ -36,7 +38,7 @@ const DevilProvider = ({ children }) => {
       if (user) {
         let currentUser = auth.currentUser;
 
-        console.log(currentUser);
+        //console.log(currentUser);
         setisLogged(true);
 
         user.updateProfile({
@@ -49,6 +51,13 @@ const DevilProvider = ({ children }) => {
     });
   }, [user]);
 
+  
+
+  const handleChangeBlog = (e) => {
+    setBlog({ ...blog, [e.target.name]: e.target.value });
+  };
+
+
   const handleSubmitBlog = (e) => {
     e.preventDefault();
 
@@ -59,25 +68,14 @@ const DevilProvider = ({ children }) => {
       })
       .then((data) => {
         console.log(data);
+       
+        
       })
       .catch((e) => {
         console.log(e);
       });
   };
 
-
-const handleUpdateBlog = () =>{
-
-
-
-
-
-}
-
-
-  const handleChangeBlog = (e) => {
-    setBlog({ ...blog, [e.target.name]: e.target.value });
-  };
 
   // izlistavanje iz firebase
 
@@ -94,8 +92,6 @@ const handleUpdateBlog = () =>{
   }, []);
 
 
-  
-
 
   return (
     <DevilContext.Provider
@@ -109,13 +105,15 @@ const handleUpdateBlog = () =>{
         username,
         setUsername,
         isLogged,
-        handleSubmitBlog,
         handleChangeBlog,
         blogCollection,
         setUpdateBlog,
         updateBlog,
         singleBlog,
-        setSingleBlog
+        setSingleBlog,
+        updateSingleBlog,
+        setUpdateSingleBlog,
+        handleSubmitBlog
       }}
     >
       {children}

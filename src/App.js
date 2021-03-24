@@ -27,9 +27,10 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Header />
+       
         <Switch>
          <Route exact path="/">
+            <Header />
             <Home /> 
           </Route>
          <Route exact path="/createBlog">
