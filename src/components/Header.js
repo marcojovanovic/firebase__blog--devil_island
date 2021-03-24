@@ -1,7 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { DevilContext } from '../context';
+import { auth, database } from '../firebase/config';
 
-function Header() {
+function Header(props) {
+
+  const {
+   
+    isLogged,
+    setUser
+   
+  } = React.useContext(DevilContext);
+
+  let { history } = props;
+
+
+  const handleLogOut = () => {
+ 
+    setUser(null);
+    auth.signOut()
+    .then(console.log('sign out'));
+    history.push('/');
+  
+};
+
+
   return (
     <div className="header">
       <ul className="navbar-nav">
@@ -15,20 +38,22 @@ function Header() {
             SignUp
           </Link>
         </li>
-        <li className="nav-item">
+        {!isLogged && <li className="nav-item">
           <Link className="nav-link" to="/login">
             SignIn
           </Link>
-        </li>
-        <li className="nav-item">
+        </li>}
+       {isLogged && <li className="nav-item">
           <Link className="nav-link" to="/createBlog">
             CreateBlog
           </Link>
-        </li>
-        <li className="nav-item"></li>
+        </li> }
+       {isLogged && <li className="nav-item">
+        <button onClick={handleLogOut} type="submit" className="signupbtn"> SIGN OUT </button> 
+        </li> }
       </ul>
     </div>
   );
 }
 
-export default Header;
+export default withRouter(Header);

@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { auth, database } from './firebase/config';
+import { auth, database, timestamp} from './firebase/config';
 import { withRouter, useHistory } from 'react-router-dom';
 
 export const DevilContext = createContext(); // izvoz za komponente
@@ -38,7 +38,7 @@ const DevilProvider = ({ children }) => {
       if (user) {
         let currentUser = auth.currentUser;
 
-        //console.log(currentUser);
+        console.log(currentUser);
         setisLogged(true);
 
         user.updateProfile({
@@ -64,7 +64,9 @@ const DevilProvider = ({ children }) => {
     database
       .collection('blogPost')
       .add({
-        ...blog,
+        timestamp,
+        ...blog
+     
       })
       .then((data) => {
         console.log(data);

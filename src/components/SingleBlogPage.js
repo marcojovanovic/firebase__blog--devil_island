@@ -31,7 +31,9 @@ function SingleBlogPage() {
 
   }, [id]);
 
-  const { autor, sadrzaj, naslov, imgURL } = singleBlog;
+  const { autor, sadrzaj, naslov, imgURL} = singleBlog;
+
+
 
   return (
     <div>
@@ -39,6 +41,7 @@ function SingleBlogPage() {
       <h4>{sadrzaj && sadrzaj}</h4>
       <img src={imgURL} alt="" />
       <p>{autor && autor}</p>
+     
     </div>
   );
 }

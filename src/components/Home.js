@@ -18,16 +18,21 @@ function Home(props) {
 
   let { history } = props;
 
+  
+
+
   return (
     <div>
       {blogCollection &&
         blogCollection.map((item) => {
-          const { naslov, sadrzaj, imgURL, autor, id } = item;
+          const { naslov, sadrzaj, imgURL, autor, id, timestamp } = item;
 
         
 
+
           return (
             <div key={id} className="blogPost__content">
+             
               <div>
                 <h2>{naslov}</h2>
 
@@ -37,17 +42,28 @@ function Home(props) {
                 </Link>
 
                 <p>{autor}</p>
+               <p>{new Date(timestamp?.toDate()).toLocaleString()}</p>
               </div>
 
-              <button
+             {isLogged && 
+              <div className='flex-btn'>
+
+
+
+                <button
                 onClick={() => database.collection('blogPost').doc(id).delete()}
                 className="btn btn-delete"
               >
                 Delete
               </button>
-              <Link to={`/updateBlog/${id}`} className="btn btn-delete">
+              <Link to={`/updateBlog/${id}`} className="btn btn-update">
                 Update
-              </Link>
+              </Link> 
+
+
+
+              </div>}
+             
             </div>
           );
         })}

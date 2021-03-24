@@ -1,5 +1,5 @@
 import React from 'react';
-import { auth, database } from '../firebase/config';
+
 import { DevilContext } from '../context';
 import { withRouter, Redirect, Link } from 'react-router-dom';
 
@@ -16,13 +16,7 @@ function CreateBlog(props) {
     handleSubmitBlog,
   } = React.useContext(DevilContext);
 
-  const handleLogOut = () => {
-    if (user) {
-      setUser(null);
-      auth.signOut().then(console.log('sign out'));
-      history.push('/login');
-    }
-  };
+  
 
   if (isLogged === false) {
     return <Redirect to="/" />;
@@ -31,9 +25,7 @@ function CreateBlog(props) {
   return (
     <div>
       {user && username}
-      <button onClick={handleLogOut} type="submit" className="signupbtn">
-        Sign Out
-      </button>
+     
 
       <h1 className="text-center">Napravi Blog</h1>
 
@@ -76,9 +68,9 @@ function CreateBlog(props) {
             />
           </div>
        
-            <Link to='/' type="submit" className="btn btn-primary btn-block">
+            <button type="submit" className="btn btn-primary btn-block">
               Add Post
-            </Link>
+            </button>
        
         </form>
       </div>

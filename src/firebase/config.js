@@ -14,16 +14,15 @@ const firebaseConfig = {
  
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
-
+const timestamp = firebase.firestore.FieldValue.serverTimestamp(); // ne treba da pravis posebno polje za timestamp, dodajes ga u ostalo sto ubacujes
 const auth = firebase.auth()
 
 const database = firebase.firestore();
 
-const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
 
-export { database, timestamp, auth};
+
+export { database, auth, timestamp};
  
 //export default !firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();
  

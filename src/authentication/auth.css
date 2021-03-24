@@ -71,5 +71,10 @@ button:hover {
 
 
 .btn-delete{
-  width: 10%;
+  width: 30%;
+}
+
+.btn-update{
+  background: rgb(179, 179, 42);
+  margin-left: 4rem;
 }
