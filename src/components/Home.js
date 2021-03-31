@@ -43,7 +43,7 @@ function Home(props) {
                 <div className="flex-btn">
                   <button
                     onClick={() =>
-                      database.collection('blogPost').doc(id).delete()
+                      alert('Sigurno želiš da obrišeš post ?', database.collection('blogPost').doc(id).delete())
                     }
                     className="btn btn-delete"
                   >

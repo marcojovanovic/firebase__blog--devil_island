@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { DevilContext } from '../context';
 import { withRouter, Redirect, Link } from 'react-router-dom';
 import { auth, database, timestamp } from '../firebase/config';
-import ReactMarkdown from 'react-markdown';
 
 function CreateBlog(props) {
   let { history } = props;
@@ -20,21 +19,21 @@ function CreateBlog(props) {
     setBlog,
     blog,
     redirectPage,
-    handleSubmitBlog
+    handleSubmitBlog,
   } = React.useContext(DevilContext);
-
-  
-
-  
 
   if (isLogged === false) {
     return <Redirect to="/" />;
   }
-  
 
- 
 
-  
+  function doRedirectNow() {
+    
+
+    if (redirectPage === true) {
+      return <Redirect to="/" />;
+    }
+  }
 
 
 
@@ -65,7 +64,6 @@ function CreateBlog(props) {
               onChange={handleChangeBlog}
               name="sadrzaj"
             ></textarea>
-            <ReactMarkdown source={input} />
           </div>
 
           <div className="form-group">
@@ -87,7 +85,12 @@ function CreateBlog(props) {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary btn-block">
+          <button
+            onClick={doRedirectNow}
+             
+            type="submit"
+            className="btn btn-primary btn-block"
+          >
             Add Post
           </button>
         </form>

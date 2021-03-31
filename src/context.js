@@ -50,6 +50,14 @@ const DevilProvider = ({ children }) => {
     });
   }, [user]);
 
+
+  useEffect(() => {
+
+      setRedirectPage(true)
+   
+    
+  },[redirectPage])
+
   useEffect(() => {
     database.collection('blogPost').onSnapshot((snapshot) => {
       let documents = [];
@@ -68,18 +76,9 @@ const DevilProvider = ({ children }) => {
     setBlog({ ...blog, [e.target.name]: e.target.value });
   };
 
-
-  const doRedirect = () =>{
-
-    if(redirectPage){
-
-
-      return <Redirect to='/' />
-
-    }
-
-
-  }
+  const doRedirect = () => {
+    return <Redirect to="/" />;
+  };
 
   const handleSubmitBlog = (e) => {
     e.preventDefault();
@@ -92,10 +91,7 @@ const DevilProvider = ({ children }) => {
       })
       .then((data) => {
         console.log(data);
-        doRedirect()
-
-          
-        
+        setRedirectPage(false)
       })
       .catch((e) => {
         console.log(e);
@@ -124,7 +120,7 @@ const DevilProvider = ({ children }) => {
         setUpdateSingleBlog,
         handleChangeBlog,
         redirectPage,
-        handleSubmitBlog
+        handleSubmitBlog,
       }}
     >
       {children}
