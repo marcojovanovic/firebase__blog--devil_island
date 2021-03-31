@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { DevilContext } from '../context';
-import { auth, database } from '../firebase/config';
+import { auth} from '../firebase/config';
 
 function Header(props) {
 

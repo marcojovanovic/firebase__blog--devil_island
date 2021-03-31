@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { auth, database, timestamp} from './firebase/config';
-import { withRouter, useHistory } from 'react-router-dom';
+import { auth, database, timestamp } from './firebase/config';
+import { withRouter, Redirect } from 'react-router-dom';
 
 export const DevilContext = createContext(); // izvoz za komponente
 
@@ -12,15 +12,14 @@ const DevilProvider = ({ children }) => {
   const [isLogged, setisLogged] = useState(false);
 
   const [username, setUsername] = useState('');
- 
-  const [updateBlog, setUpdateBlog]=useState(false) 
 
-  const [singleBlog, setSingleBlog]=useState('')
+  const [updateBlog, setUpdateBlog] = useState(false);
 
-  const [updateSingleBlog, setUpdateSingleBlog]=useState('')
+  const [singleBlog, setSingleBlog] = useState('');
 
-  const history = useHistory()
+  const [updateSingleBlog, setUpdateSingleBlog] = useState('');
 
+  const [redirectPage, setRedirectPage] = useState(true);
 
   const [blog, setBlog] = useState({
     naslov: '',
@@ -51,36 +50,6 @@ const DevilProvider = ({ children }) => {
     });
   }, [user]);
 
-  
-
-  const handleChangeBlog = (e) => {
-    setBlog({ ...blog, [e.target.name]: e.target.value });
-  };
-
-
-  const handleSubmitBlog = (e) => {
-    e.preventDefault();
-
-    database
-      .collection('blogPost')
-      .add({
-        timestamp,
-        ...blog
-     
-      })
-      .then((data) => {
-        console.log(data);
-       
-        
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
-
-
-  // izlistavanje iz firebase
-
   useEffect(() => {
     database.collection('blogPost').onSnapshot((snapshot) => {
       let documents = [];
@@ -93,7 +62,45 @@ const DevilProvider = ({ children }) => {
     });
   }, []);
 
+  // izlistavanje iz firebase
 
+  const handleChangeBlog = (e) => {
+    setBlog({ ...blog, [e.target.name]: e.target.value });
+  };
+
+
+  const doRedirect = () =>{
+
+    if(redirectPage){
+
+
+      return <Redirect to='/' />
+
+    }
+
+
+  }
+
+  const handleSubmitBlog = (e) => {
+    e.preventDefault();
+
+    database
+      .collection('blogPost')
+      .add({
+        timestamp,
+        ...blog,
+      })
+      .then((data) => {
+        console.log(data);
+        doRedirect()
+
+          
+        
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
   return (
     <DevilContext.Provider
@@ -107,14 +114,16 @@ const DevilProvider = ({ children }) => {
         username,
         setUsername,
         isLogged,
-        handleChangeBlog,
         blogCollection,
+        setBlogCollection,
         setUpdateBlog,
         updateBlog,
         singleBlog,
         setSingleBlog,
         updateSingleBlog,
         setUpdateSingleBlog,
+        handleChangeBlog,
+        redirectPage,
         handleSubmitBlog
       }}
     >

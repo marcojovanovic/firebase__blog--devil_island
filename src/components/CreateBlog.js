@@ -1,31 +1,46 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { DevilContext } from '../context';
 import { withRouter, Redirect, Link } from 'react-router-dom';
+import { auth, database, timestamp } from '../firebase/config';
+import ReactMarkdown from 'react-markdown';
 
 function CreateBlog(props) {
   let { history } = props;
+
+  const input = `#viki`;
 
   const {
     user,
     setUser,
     username,
     isLogged,
+    setBlogCollection,
     handleChangeBlog,
+    setBlog,
     blog,
-    handleSubmitBlog,
+    redirectPage,
+    handleSubmitBlog
   } = React.useContext(DevilContext);
+
+  
 
   
 
   if (isLogged === false) {
     return <Redirect to="/" />;
   }
+  
+
+ 
+
+  
+
+
 
   return (
     <div>
       {user && username}
-     
 
       <h1 className="text-center">Napravi Blog</h1>
 
@@ -40,15 +55,19 @@ function CreateBlog(props) {
               name="naslov"
             />
           </div>
+
           <div className="form-group">
             <label htmlFor="color">Sadržaj</label>
-            <input
+
+            <textarea
               type="text"
               className="form-control"
               onChange={handleChangeBlog}
               name="sadrzaj"
-            />
+            ></textarea>
+            <ReactMarkdown source={input} />
           </div>
+
           <div className="form-group">
             <label htmlFor="price">ImgURL</label>
             <input
@@ -67,11 +86,10 @@ function CreateBlog(props) {
               name="autor"
             />
           </div>
-       
-            <button type="submit" className="btn btn-primary btn-block">
-              Add Post
-            </button>
-       
+
+          <button type="submit" className="btn btn-primary btn-block">
+            Add Post
+          </button>
         </form>
       </div>
     </div>
