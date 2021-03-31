@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { auth } from '../firebase/config';
 import { DevilContext } from '../context';
-import { Redirect, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 function SignUp(props) {
   const {
@@ -11,16 +11,11 @@ function SignUp(props) {
     setPassword,
     user,
     setUser,
-    username, 
+    username,
     setUsername,
-
   } = React.useContext(DevilContext);
 
   let { history } = props;
-
-
-  
-
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -47,7 +42,7 @@ function SignUp(props) {
           <h1>Sign In</h1>
           <p>Please fill in this form to create an account.</p>
           <hr />
-  
+
           <label htmlFor="email">
             <b>Autor</b>
           </label>
@@ -59,7 +54,7 @@ function SignUp(props) {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-      
+
           <label htmlFor="email">
             <b>Email</b>
           </label>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { auth } from '../firebase/config';
 import { DevilContext } from '../context';
 import { withRouter } from 'react-router-dom';

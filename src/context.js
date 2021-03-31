@@ -1,6 +1,8 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { auth, database, timestamp } from './firebase/config';
-import { withRouter, Redirect } from 'react-router-dom';
+
+import {ErrorPage} from './components'
+
 
 export const DevilContext = createContext(); // izvoz za komponente
 
@@ -20,6 +22,8 @@ const DevilProvider = ({ children }) => {
   const [updateSingleBlog, setUpdateSingleBlog] = useState('');
 
   const [redirectPage, setRedirectPage] = useState(true);
+
+  const [error, setError]=useState(false)
 
   const [blog, setBlog] = useState({
     naslov: '',
@@ -46,6 +50,7 @@ const DevilProvider = ({ children }) => {
       } else {
         console.log('no user');
         setisLogged(false);
+        setError(true)
       }
     });
   }, [user]);
@@ -59,7 +64,8 @@ const DevilProvider = ({ children }) => {
   },[redirectPage])
 
   useEffect(() => {
-    database.collection('blogPost').onSnapshot((snapshot) => {
+    database.collection('blogPost').orderBy('timestamp', 'desc')
+    .onSnapshot((snapshot) => {
       let documents = [];
 
       snapshot.forEach((doc) => {
@@ -76,9 +82,7 @@ const DevilProvider = ({ children }) => {
     setBlog({ ...blog, [e.target.name]: e.target.value });
   };
 
-  const doRedirect = () => {
-    return <Redirect to="/" />;
-  };
+
 
   const handleSubmitBlog = (e) => {
     e.preventDefault();
@@ -89,6 +93,7 @@ const DevilProvider = ({ children }) => {
         timestamp,
         ...blog,
       })
+      
       .then((data) => {
         console.log(data);
         setRedirectPage(false)

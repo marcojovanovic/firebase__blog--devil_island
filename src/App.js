@@ -13,18 +13,17 @@ import './header.css';
 
 import SignUp from './authentication/SignUp';
 import SignIn from './authentication/SignIn';
-import Header from './components/Header';
-import Home from './components/Home';
-
-import RedirectPage from './components/RedirectPage';
-import CreateBlog from './components/CreateBlog';
-import UpdateBlog from './components/UpdateBlog';
-import SingleBlogPage from './components/SingleBlogPage';
+import {
+  Header,
+  Home,
+  RedirectPage,
+  CreateBlog,
+  UpdateBlog,
+  SingleBlogPage,
+} from './components';
 
 function App() {
   const { user, username, redirectPage } = React.useContext(DevilContext);
-
-  //let history = useHistory()
 
   return (
     <div className="App">

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { auth, database } from '../firebase/config';
+import { database } from '../firebase/config';
 import { DevilContext } from '../context';
 import { withRouter, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
@@ -11,8 +11,6 @@ function Home(props) {
     setUser,
     username,
     isLogged,
-    handleSubmitBlog,
-    handleChangeBlog,
     blogCollection,
     setUpdateBlog,
   } = React.useContext(DevilContext);
