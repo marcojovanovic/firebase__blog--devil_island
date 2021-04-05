@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ErrorPage() {
+function DisplaySuccesLogin() {
   return (
     <div>
       
@@ -8,4 +8,4 @@ function ErrorPage() {
   )
 }
 
-export default ErrorPage
+export default DisplaySuccesLogin

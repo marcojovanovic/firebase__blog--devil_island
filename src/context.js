@@ -1,8 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { auth, database, timestamp } from './firebase/config';
 
-import {ErrorPage} from './components'
-
+import { ErrorPage } from './components';
 
 export const DevilContext = createContext(); // izvoz za komponente
 
@@ -23,7 +22,7 @@ const DevilProvider = ({ children }) => {
 
   const [redirectPage, setRedirectPage] = useState(true);
 
-  const [error, setError]=useState(false)
+  const [error, setError] = useState(false);
 
   const [blog, setBlog] = useState({
     naslov: '',
@@ -50,30 +49,28 @@ const DevilProvider = ({ children }) => {
       } else {
         console.log('no user');
         setisLogged(false);
-        setError(true)
+       
       }
     });
   }, [user]);
 
+  useEffect(() => {
+    setRedirectPage(true);
+  }, [redirectPage]);
 
   useEffect(() => {
+    database
+      .collection('blogPost')
+      .orderBy('timestamp', 'desc')
+      .onSnapshot((snapshot) => {
+        let documents = [];
 
-      setRedirectPage(true)
-   
-    
-  },[redirectPage])
+        snapshot.forEach((doc) => {
+          documents.push({ ...doc.data(), id: doc.id });
+        });
 
-  useEffect(() => {
-    database.collection('blogPost').orderBy('timestamp', 'desc')
-    .onSnapshot((snapshot) => {
-      let documents = [];
-
-      snapshot.forEach((doc) => {
-        documents.push({ ...doc.data(), id: doc.id });
+        setBlogCollection(documents);
       });
-
-      setBlogCollection(documents);
-    });
   }, []);
 
   // izlistavanje iz firebase
@@ -81,8 +78,6 @@ const DevilProvider = ({ children }) => {
   const handleChangeBlog = (e) => {
     setBlog({ ...blog, [e.target.name]: e.target.value });
   };
-
-
 
   const handleSubmitBlog = (e) => {
     e.preventDefault();
@@ -93,10 +88,10 @@ const DevilProvider = ({ children }) => {
         timestamp,
         ...blog,
       })
-      
+
       .then((data) => {
         console.log(data);
-        setRedirectPage(false)
+        setRedirectPage(false);
       })
       .catch((e) => {
         console.log(e);
@@ -126,6 +121,8 @@ const DevilProvider = ({ children }) => {
         handleChangeBlog,
         redirectPage,
         handleSubmitBlog,
+        error, 
+        setError
       }}
     >
       {children}

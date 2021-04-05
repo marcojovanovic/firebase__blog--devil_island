@@ -14,13 +14,14 @@ import './header.css';
 import SignUp from './authentication/SignUp';
 import SignIn from './authentication/SignIn';
 import {
-  Header,
   Home,
   RedirectPage,
   CreateBlog,
   UpdateBlog,
   SingleBlogPage,
-} from './components';
+} from './pages';
+
+import {Header} from './components'
 
 function App() {
   const { user, username, redirectPage } = React.useContext(DevilContext);

@@ -1,9 +1,6 @@
-import CreateBlog from './CreateBlog'
 import Header from './Header'
-import Home from './Home'
-import RedirectPage from './RedirectPage'
-import SingleBlogPage from './SingleBlogPage'
-import UpdateBlog from './UpdateBlog'
-import ErrorPage from './ErrorPage'
+import DisplayError from './DisplayError'
+import DisplaySuccesLogin from './DisplaySuccesLogin'
 
-export {CreateBlog, Header, Home, RedirectPage, SingleBlogPage, UpdateBlog, ErrorPage}
+
+export {Header, DisplayError, DisplaySuccesLogin}

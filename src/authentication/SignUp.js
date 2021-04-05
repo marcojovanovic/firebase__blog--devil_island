@@ -3,6 +3,8 @@ import { auth } from '../firebase/config';
 import { DevilContext } from '../context';
 import { withRouter } from 'react-router-dom';
 
+import { ErrorPage } from '../components';
+
 function SignUp(props) {
   const {
     email,
@@ -11,8 +13,10 @@ function SignUp(props) {
     setPassword,
     user,
     setUser,
-    username, 
-    setUsername
+    username,
+    setUsername,
+    error,
+    setError,
   } = React.useContext(DevilContext);
 
   let { history } = props;
@@ -27,7 +31,7 @@ function SignUp(props) {
 
         history.push('/login');
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.message));
 
     setPassword('');
     setEmail('');
