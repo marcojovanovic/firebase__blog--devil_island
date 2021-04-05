@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { auth } from '../firebase/config';
 import { DevilContext } from '../context';
 import { withRouter } from 'react-router-dom';
-import { ErrorPage } from '../components';
+
 
 function SignUp(props) {
   const {
@@ -10,12 +10,11 @@ function SignUp(props) {
     setEmail,
     password,
     setPassword,
-    user,
     setUser,
     username,
     setUsername,
     error,
-    setError
+    setError,
   } = React.useContext(DevilContext);
 
   let { history } = props;
@@ -31,24 +30,27 @@ function SignUp(props) {
         history.push('/');
       })
       .catch((err) => {
-        
-        console.log(err)
-        setError(true)
-      
-      })
-
-      
+        console.log(err.message);
+        setError(err.message);
+      });
 
     setPassword('');
     setEmail('');
   };
 
-  console.log(user);
+  useEffect(() => {
+    setTimeout(() => {
+      setError('');
+    }, 4000);
+  }, [error]);
 
   return (
     <div>
       <form onSubmit={handleLogin}>
         <div className="container">
+          
+        <div className={`error ${error  ? 'reveal' : ''}`}>{error}</div>
+
           <h1>Sign In</h1>
           <p>Please fill in this form to create an account.</p>
           <hr />

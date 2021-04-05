@@ -1,15 +1,50 @@
-*{
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-ul li{
+html {
+  font-size: 62.5%;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.15;
+}
+
+body {
+  background: #f4f4f4;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.5;
+}
+ul li {
   list-style: none;
 }
 
-a{
+a {
   text-decoration: none !important;
-  color:white;
+  color: white;
   font-size: 1.5rem;
+  cursor: pointer;
 }
+
+ul {
+  list-style: none;
+}
+
+p {
+  font-size: 1.6rem;
+}
+
+img {
+  display: block;
+  width: 100%;
+  border-style: none;
+}
+
+textarea {
+  overflow: auto;
+}
+
+
+

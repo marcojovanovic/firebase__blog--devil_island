@@ -1,19 +1,12 @@
 import React, { useEffect } from 'react';
 import { DevilContext } from '../context';
-import { withRouter, Redirect, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import { database } from '../firebase/config';
 
 function SingleBlogPage() {
   let { id } = useParams();
   const {
-    user,
-    setUser,
-    username,
-    isLogged,
-    handleSubmitBlog,
-    handleChangeBlog,
-    blogCollection,
-    setUpdateBlog,
+
     singleBlog,
     setSingleBlog,
   } = React.useContext(DevilContext);

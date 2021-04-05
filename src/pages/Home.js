@@ -3,22 +3,33 @@ import React, { useEffect } from 'react';
 import { database } from '../firebase/config';
 import { DevilContext } from '../context';
 import { withRouter, Link } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
+import { DisplaySuccesLogin } from '../components';
 
 function Home(props) {
   const {
     user,
-    setUser,
-    username,
     isLogged,
     blogCollection,
-    setUpdateBlog,
+    successMessage,
+    setSuccessMessage,
   } = React.useContext(DevilContext);
 
-  let { history } = props;
+  useEffect(() => {
+
+
+    if (user) {
+
+        setSuccessMessage(true);
+      setTimeout(() => {
+        setSuccessMessage(false);
+      }, 2000);
+    } 
+  }, []);
 
   return (
-    <div>
+    <>
+      {successMessage && <DisplaySuccesLogin />}
+
       {blogCollection &&
         blogCollection.map((item) => {
           const { naslov, sadrzaj, imgURL, autor, id, timestamp } = item;
@@ -27,7 +38,7 @@ function Home(props) {
             <div key={id} className="blogPost__content">
               <div>
                 <h2>{naslov}</h2>
-                <ReactMarkdown source={sadrzaj} />
+                <h4>{sadrzaj} </h4>
 
                 <Link to={`/singleBlogPage/${id}`}>
                   <img src={imgURL} alt="" />
@@ -41,7 +52,10 @@ function Home(props) {
                 <div className="flex-btn">
                   <button
                     onClick={() =>
-                      alert('Sigurno želiš da obrišeš post ?', database.collection('blogPost').doc(id).delete())
+                      alert(
+                        'Sigurno želiš da obrišeš post ?',
+                        database.collection('blogPost').doc(id).delete()
+                      )
                     }
                     className="btn btn-delete"
                   >
@@ -55,7 +69,7 @@ function Home(props) {
             </div>
           );
         })}
-    </div>
+    </>
   );
 }
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './App.css';
 
 import { DevilContext } from './context';
@@ -24,7 +24,7 @@ import {
 import {Header} from './components'
 
 function App() {
-  const { user, username, redirectPage } = React.useContext(DevilContext);
+  const { redirectPage } = React.useContext(DevilContext);
 
   return (
     <div className="App">
