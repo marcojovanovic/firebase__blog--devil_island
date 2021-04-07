@@ -18,15 +18,27 @@ hr {
 }
 
 /* Set a style for all buttons */
+
 .btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px auto;
+  
+ 
+  
   border: none;
-  cursor: pointer;
+  font-weight: bolder;
+  color:white;
+  background: transparent;
   width: 100%;
   opacity: 0.9;
+  outline: none;
+  cursor: pointer;
+}
+
+
+@media (max-width: 700px) {
+  .btn {
+    width: 50%;
+  
+  }
 }
 
 button:hover {

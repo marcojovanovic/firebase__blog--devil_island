@@ -12,6 +12,16 @@ html {
   line-height: 1.15;
 }
 
+@media (min-width: 700px) {
+  html {
+    font-size: 62.5%;
+  
+  }
+}
+
+
+
+
 body {
   background: #f4f4f4;
   font-family: 'Montserrat', sans-serif;
@@ -42,8 +52,16 @@ img {
   border-style: none;
 }
 
+
+
 textarea {
-  overflow: auto;
+  width: 100%;
+  border:none;
+  outline: none;
+  resize: none;
+  background: url('https://img.freepik.com/free-photo/design-space-paper-textured-background_53876-42312.jpg?size=626&ext=jpg&ga=GA1.2.1950443642.1616284800') center no-repeat;
+  background-size: cover;
+  font-weight: bold;
 }
 
 

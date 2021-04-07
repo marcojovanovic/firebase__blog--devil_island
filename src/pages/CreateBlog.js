@@ -5,8 +5,6 @@ import { withRouter, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
 function CreateBlog(props) {
-  const input = `#viki`;
-
   const {
     user,
     username,
@@ -28,31 +26,42 @@ function CreateBlog(props) {
 
   return (
     <Wrapper>
-      {user && username}
-
       <Title>Napravi Blog</Title>
 
       <FormContainer>
         <form onSubmit={handleSubmitBlog}>
           <Label htmlFor="naslov">Naslov Bloga</Label>
           <FormField>
-            <input type="text" onChange={handleChangeBlog} name="naslov" />
+            <input
+              type="text"
+              onChange={handleChangeBlog}
+              name="naslov"
+              required
+            />
           </FormField>
 
           <div className="form-group">
-            <label htmlFor="color">Sadržaj</label>
+            <Label htmlFor="naslov">Sadrzaj</Label>
 
-            <textarea
-              type="text"
-              className="form-control"
-              onChange={handleChangeBlog}
-              name="sadrzaj"
-            ></textarea>
+            <FormField>
+              <textarea
+                type="text"
+                onChange={handleChangeBlog}
+                name="sadrzaj"
+                rows="18"
+                required
+              ></textarea>
+            </FormField>
           </div>
 
           <Label htmlFor="Img">ImgURL</Label>
           <FormField>
-            <input type="text" onChange={handleChangeBlog} name="imgURL" />
+            <input
+              type="text"
+              onChange={handleChangeBlog}
+              name="imgURL"
+              required
+            />
           </FormField>
 
           <div className="form-group">
@@ -62,13 +71,15 @@ function CreateBlog(props) {
                 type="text"
                 onChange={handleChangeBlog}
                 name="autor"
+                required
               />
             </FormField>
           </div>
-
-          <button className='btn' onClick={doRedirectNow} type="submit">
-            Add Post
-          </button>
+          <Button>
+            <button className="btn" onClick={doRedirectNow} type="submit">
+              Add Post
+            </button>
+          </Button>
         </form>
       </FormContainer>
     </Wrapper>
@@ -158,15 +169,15 @@ const Wrapper = styled.div`
       transparent 100%
     ),
     linear-gradient(214deg, rgb(83, 91, 235), rgb(76, 11, 174));
-  height: 100vh;
+  height: 150vh;
 `;
 
 const Button = styled.div`
   font-weight: bold;
-  color:white;
+  color: white;
   line-height: 2.5rem;
   padding: 1.2rem 4rem;
-  font-size:1.5rem;
+  font-size: 1.5rem;
   border: 0;
   border-radius: 3rem;
   background-image: linear-gradient(131deg, #ffd340, #ff923c, #ff923c, #ff923c);
@@ -174,19 +185,25 @@ const Button = styled.div`
   transition: all 0.3s ease-in-out;
   cursor: pointer;
   text-align: center;
-  margin-top:6rem;
-  
+  margin-top: 6rem;
 
   &:hover {
     box-shadow: 0 0.5em 0.5em -0.4em #ff923cba;
     background-size: 100% 100%;
     transform: translateY(-0.15em);
   }
+
 `;
 
 const FormContainer = styled.div`
   width: 100rem;
   margin: auto;
+
+
+  @media (max-width: 1000px) {
+    width: 80% !important;
+  }
+
 `;
 
 const Title = styled.div`
@@ -195,8 +212,7 @@ const Title = styled.div`
   font-size: 3rem;
   transform: translateY(5rem);
   margin-bottom: 10rem;
-  letter-spacing:0.5rem;
-
+  letter-spacing: 0.5rem;
 `;
 
 const FormField = styled.div`
@@ -205,7 +221,11 @@ const FormField = styled.div`
   border: none;
   box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.11);
   padding: 2.2rem 3.5rem;
-  margin: 3.5rem 0;
+  margin: 3rem 0;
+
+  @media (max-width: 100px) {
+    max-width: 50% !important;
+  }
 
   &:focus {
     background-color: #f2f6f8;
