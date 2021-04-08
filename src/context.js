@@ -97,6 +97,12 @@ const DevilProvider = ({ children }) => {
       });
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      setError('');
+    }, 7000);
+  }, [error]);
+
   return (
     <DevilContext.Provider
       value={{

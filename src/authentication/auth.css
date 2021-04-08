@@ -2,28 +2,33 @@
 
 /* Full-width input fields */
   input[type=text], input[type=password] {
-  width: 100%;
-  border:none;
-  background-color: #f2f6f8;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none
+   
+
 }
 
 input[type=text]:focus, input[type=password]:focus {
  
-  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  box-shadow:none !important;
+
 }
 
 hr {
   border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
+  margin-bottom: 2.5rem;
 }
 
 /* Set a style for all buttons */
 
 .btn {
-  
- 
-  
-  border: none;
+  border:none;
   font-weight: bolder;
   color:white;
   background: transparent;
@@ -31,6 +36,7 @@ hr {
   opacity: 0.9;
   outline: none;
   cursor: pointer;
+  padding: 0.4rem;
 }
 
 
@@ -89,10 +95,13 @@ button:hover {
 }
 
 .error{
-  color:red;
-  margin-bottom: 2px;
-  transform: translateX(-50vh);
+  color:white;
+  margin-bottom: 1rem;
+  transform: translateX(-20vh) translateY(20rem);
   transition: 0.3s ease-in-out;
+  font-size: 2rem;
+  
+  
 
 }
 

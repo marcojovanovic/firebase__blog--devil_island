@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { DevilContext } from '../context';
 import {  useParams } from 'react-router-dom';
 import { database } from '../firebase/config';
+import styled from 'styled-components'
 
 function SingleBlogPage() {
   let { id } = useParams();
@@ -38,5 +39,15 @@ function SingleBlogPage() {
     </div>
   );
 }
+
+
+const IMG = styled.img`
+
+  width:20%;
+
+
+
+`
+
 
 export default SingleBlogPage;

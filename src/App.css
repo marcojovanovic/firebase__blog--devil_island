@@ -19,9 +19,6 @@ html {
   }
 }
 
-
-
-
 body {
   background: #f4f4f4;
   font-family: 'Montserrat', sans-serif;
@@ -65,4 +62,9 @@ textarea {
 }
 
 
-
+input{
+  background: transparent;
+  border:none;
+  outline: none;
+  color: rgb(175, 177, 190);
+}

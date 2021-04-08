@@ -49,9 +49,8 @@ function App() {
           <Route exact path="/login">
             <SignIn />
           </Route>
-          <Route path="*">
-            <RedirectPage />
-          </Route>
+          <Route path="*" component={RedirectPage} />
+            
         </Switch>
       </Router>
     </div>
