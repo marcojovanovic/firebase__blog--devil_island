@@ -4,6 +4,9 @@ import { database } from '../firebase/config';
 import { DevilContext } from '../context';
 import { withRouter, Link } from 'react-router-dom';
 import { DisplaySuccesLogin } from '../components';
+import styled from 'styled-components'
+
+
 
 function Home(props) {
   const {
@@ -38,10 +41,10 @@ function Home(props) {
             <div key={id} className="blogPost__content">
               <div>
                 <h2>{naslov}</h2>
-                <h4>{sadrzaj} </h4>
+                <h4>{`${sadrzaj.slice(0,85)} ...`} </h4>
 
                 <Link to={`/singleBlogPage/${id}`}>
-                  <img src={imgURL} alt="" />
+                  <Image src={imgURL} alt="" />
                 </Link>
 
                 <p>{autor}</p>
@@ -72,5 +75,11 @@ function Home(props) {
     </>
   );
 }
+
+const Image = styled.img`
+
+  width:30rem;
+
+`
 
 export default withRouter(Home);

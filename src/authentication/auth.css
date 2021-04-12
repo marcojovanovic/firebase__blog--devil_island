@@ -1,23 +1,23 @@
-* {box-sizing: border-box}
-
-/* Full-width input fields */
-  input[type=text], input[type=password] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    -o-appearance: none
-   
-
+* {
+  box-sizing: border-box;
 }
 
-input[type=text]:focus, input[type=password]:focus {
- 
+/* Full-width input fields */
+input[type='text'],
+input[type='password'] {
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
   -o-appearance: none;
-  box-shadow:none !important;
+}
 
+input[type='text']:focus,
+input[type='password']:focus {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  box-shadow: none ;
 }
 
 hr {
@@ -28,9 +28,9 @@ hr {
 /* Set a style for all buttons */
 
 .btn {
-  border:none;
+  border: none;
   font-weight: bolder;
-  color:white;
+  color: white;
   background: transparent;
   width: 100%;
   opacity: 0.9;
@@ -39,18 +39,15 @@ hr {
   padding: 0.4rem;
 }
 
-
 @media (max-width: 700px) {
   .btn {
     width: 50%;
-  
   }
 }
 
 button:hover {
-  opacity:1;
+  opacity: 1;
 }
-
 
 /* Add padding to container elements */
 .container {
@@ -59,52 +56,42 @@ button:hover {
   margin: auto;
 }
 
-
-
 /* home */
 
-
-.form-container{
+.form-container {
   padding: 2rem;
   max-width: 1200px;
   margin: 3rem auto;
 }
 
-.text-center{
+.text-center {
   text-align: center;
   margin-top: 1.5rem;
 }
 
-
-.blogPost__content{
-
+.blogPost__content {
   display: flex;
   align-items: center;
   padding: 3rem;
-
 }
 
-
-.btn-delete{
+.btn-delete {
   width: 30%;
 }
 
-.btn-update{
+.btn-update {
   background: rgb(179, 179, 42);
   margin-left: 4rem;
 }
 
-.error{
-  color:white;
+.error {
+  color: white;
   margin-bottom: 1rem;
   transform: translateX(-20vh) translateY(20rem);
   transition: 0.3s ease-in-out;
   font-size: 2rem;
-  
-  
-
 }
 
-.reveal{
+.reveal {
   transform: translateX(0);
 }

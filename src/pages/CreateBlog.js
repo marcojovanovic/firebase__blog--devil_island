@@ -37,6 +37,7 @@ function CreateBlog(props) {
               onChange={handleChangeBlog}
               name="naslov"
               required
+              autoComplete='off'
             />
           </FormField>
 
@@ -50,6 +51,7 @@ function CreateBlog(props) {
                 name="sadrzaj"
                 rows="18"
                 required
+                autoComplete='off'
               ></textarea>
             </FormField>
           </div>
@@ -61,6 +63,7 @@ function CreateBlog(props) {
               onChange={handleChangeBlog}
               name="imgURL"
               required
+              autoComplete='off'
             />
           </FormField>
 
@@ -72,6 +75,7 @@ function CreateBlog(props) {
                 onChange={handleChangeBlog}
                 name="autor"
                 required
+                autoComplete='off'
               />
             </FormField>
           </div>
@@ -222,6 +226,15 @@ const FormField = styled.div`
   box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.11);
   padding: 2.2rem 3.5rem;
   margin: 3rem 0;
+
+
+  & input{
+      color:#333;
+      width:100%;
+
+
+  }
+
 
   @media (max-width: 100px) {
     max-width: 50% !important;

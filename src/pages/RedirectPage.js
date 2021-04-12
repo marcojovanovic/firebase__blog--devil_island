@@ -1,21 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {MdArrowBack} from 'react-icons/md/'
+import { MdArrowBack } from 'react-icons/md/';
 
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 function RedirectPage() {
-  return <Wrapper>
-
-    <Link to='/'>
-
-      <Button>
-      <MdArrowBack className='backIcon' />
-      </Button>
-    </Link>
-
-  </Wrapper>;
+  return (
+    <Wrapper>
+      <Link to="/">
+        <Button>
+          <MdArrowBack className="backIcon" />
+        </Button>
+      </Link>
+    </Wrapper>
+  );
 }
 
 export default RedirectPage;
@@ -25,10 +24,10 @@ const Wrapper = styled.div`
   background: url('https://www.jco.fi/wp-content/uploads/2019/10/hero-blog-404.jpg');
   background-position: center;
   background-size: cover;
-  display:flex;
-  justify-content:flex-start;
-  align-items:flex-start;
-  padding-left:8rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: 8rem;
 `;
 
 const Button = styled.div`
@@ -52,8 +51,7 @@ const Button = styled.div`
     transform: translateY(-0.15em);
   }
 
-  .backIcon{
-    font-size:4rem;
+  .backIcon {
+    font-size: 4rem;
   }
-
 `;

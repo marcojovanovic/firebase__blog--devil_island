@@ -9,7 +9,7 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom';
-import './header.css';
+
 
 import SignUp from './authentication/SignUp';
 import SignIn from './authentication/SignIn';

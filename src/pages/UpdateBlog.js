@@ -83,6 +83,7 @@ function UpdateBlog(props) {
                 onChange={handleUpdateChangeBlog}
                 name="naslov"
                 required
+                autoComplete='off'
               />
             </FormField>
           </div>
@@ -96,6 +97,7 @@ function UpdateBlog(props) {
                 onChange={handleUpdateChangeBlog}
                 name="sadrzaj"
                 required
+                autoComplete='off'
               />
             </FormField>
           </div>
@@ -108,6 +110,7 @@ function UpdateBlog(props) {
                 onChange={handleUpdateChangeBlog}
                 name="imgURL"
                 required
+                autoComplete='off'
               />
             </FormField>
           </div>
@@ -120,6 +123,7 @@ function UpdateBlog(props) {
                 onChange={handleUpdateChangeBlog}
                 name="autor"
                 required
+                autoComplete='off'
               />
             </FormField>
           </div>
