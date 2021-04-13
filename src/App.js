@@ -21,7 +21,7 @@ import {
   SingleBlogPage,
 } from './pages';
 
-import {Header} from './components'
+import {Header, ScrollToTop} from './components'
 
 function App() {
   const { redirectPage } = React.useContext(DevilContext);
@@ -29,6 +29,7 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <ScrollToTop />
         <Switch>
           <Route exact path="/">
             <Header />
@@ -40,9 +41,7 @@ function App() {
           <Route exact path="/updateBlog/:id">
             <UpdateBlog />
           </Route>
-          <Route exact path="/singleBlogPage/:id">
-            <SingleBlogPage />
-          </Route>
+          <Route exact path="/singleBlogPage/:id" component={SingleBlogPage} />
           <Route exact path="/signUp">
             <SignUp />
           </Route>

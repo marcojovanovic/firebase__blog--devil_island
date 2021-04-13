@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
 import { DevilContext } from '../context';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
 import { database } from '../firebase/config';
 import styled from 'styled-components';
+import { MdArrowBack } from 'react-icons/md/';
 
 function SingleBlogPage() {
   let { id } = useParams();
   const { singleBlog, setSingleBlog } = React.useContext(DevilContext);
+
+  const history = useHistory();
 
   useEffect(() => {
     database
@@ -17,6 +20,45 @@ function SingleBlogPage() {
         setSingleBlog(snap.data());
       });
   }, [id]);
+
+  const listItems = [
+    {
+      text: 'Istorija "bele" plaže',
+      onClick: () => history.push('/singleBlogPage/IwPzzupyD8ShCIleetlX'),
+    },
+    {
+      text: 'Kako pronaći naselja',
+      onClick: () => history.push('/singleBlogPage/SlwSkfsModZTHWstsdsD'),
+    },
+    {
+      text: 'Hoteli',
+      onClick: () => history.push('/singleBlogPage/ewHp5BvGYtqeVs2ZbTAF'),
+    },
+    {
+      text: 'Najopasnije obale Đavoljeg ostrva',
+      onClick: () => history.push('/singleBlogPage/iLv5tVpw0waKK0d8K7wg'),
+    },
+    {
+      text: 'Najstarije pećine Azije',
+      onClick: () => history.push('/singleBlogPage/skGfuaJ3oqc4yqg2uXjf'),
+    },
+    {
+      text: 'Ostrvo sa najtoplijom vodom u okeanu',
+      onClick: () => history.push('/singleBlogPage/1GJmlFpcLQdtMFs1KYWR'),
+    },
+    {
+      text: 'Koralni grebeni',
+      onClick: () => history.push('/singleBlogPage/Q8duDrH0Jou4gTCTYRe4'),
+    },
+    {
+      text: 'Naš utisak sa plaže',
+      onClick: () => history.push('/singleBlogPage/k4ZYR6p6KzctytheLYeN'),
+    },
+    {
+      text: 'Gde se nalaze Đavolja ostrva',
+      onClick: () => history.push('/singleBlogPage/fXdExvzHdohKWdEXiygo'),
+    },
+  ];
 
   const { autor, sadrzaj, naslov, imgURL } = singleBlog;
 
@@ -31,18 +73,27 @@ function SingleBlogPage() {
             <Title>{naslov && naslov}</Title>
           </div>
         </Heading>
-        <div className='flex'>
+        <div className="flex">
+          <Content>{sadrzaj && sadrzaj}</Content>
+          <Navigation>
+            <Link className="singleBlog__link" to="/">
+              <MdArrowBack className="backIcon" /> Povratak na glavnu stranu
+            </Link>
+            <div className="line"></div>
 
-            <Navigation>
-              <NavTitle>Povratak na glavnu stranu</NavTitle>
-              <Link className='singleBlog__link' to='/'>Main Page</Link>
-              <Link className='singleBlog__link' to='/singleBlogPage/nxGCzeJvxAwS7TzJNcU2'>Drugi Blog</Link>
-            </Navigation>
-           <Content>{sadrzaj && sadrzaj}</Content>
+            <ArticleTitle>Povezani članci</ArticleTitle>
+            <SideImg src="https://lh3.googleusercontent.com/proxy/Ljoc4ccQVN05yOEJl1KC97hSDIMwNJrvxYaZbN-8bvSvSRmEjXcQVLkrsi1vFCtInSgPKjG3iVZeo-kuti84lQaa-Jb2OxcWJN33lezLEgv-o484C_vW_fkny1HZPT604O1Acyw" />
+
+            {listItems.map((item) => (
+              <ListItem button key={item.text} onClick={item.onClick}>
+                {item.text}
+              </ListItem>
+            ))}
+          </Navigation>
         </div>
-       
+
         <Contributor>
-          <AutorImg src="https://lh3.googleusercontent.com/proxy/bPkuSOhOIAUm3KQlEX7lrU7m8xtDrm1-JwnaYl5nAyRIH69iRawC4uINPbk2Vc-3MdMy77aRaDOmKlOCBuCbEaMIFV4Yb0WdAcD_B-l6byXsZJqYieFJCirbJq8J1yUFb11YZ64ZP8JODVcPnumC5H5PHLwg" />{' '}
+          <AutorImg src="https://lh3.googleusercontent.com/proxy/gfa8YW5zkqhgmh3RC-GPxn0dn8qrWvD01VnboXGuJi2NMJqTplVCr91-a4Np9riWTrUZeiCBfcb0RN_Y5TaXt5uYDbWQBnGcghHoAMvajPoCsIEtUiMl8NeAD2wuxXr_ORt_INTxUcsP3a0G7g" />
           <AutorInfo>{autor && autor}</AutorInfo>{' '}
         </Contributor>
       </Main>
@@ -60,30 +111,41 @@ const Wrapper = styled.div`
   .singleBlog__item {
     display: flex;
     flex-direction: column;
-    align-items: space-between;
+    align-items: center;
     height: 100%;
-    justify-content: space-between;
+    justify-content: center;
   }
 `;
 
 const Heading = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)),
     url(${(props) => (props.back ? props.back : 'lightblue')});
-  background-position: top;
+  background-position: center;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: start;
-  padding-top: 7rem;
-  height: 40vh;
+  height: 45vh;
   object-fit: cover;
   filter: hue-rotate(50deg);
   -webkit-box-reflect: below 1px linear-gradient(transparent, #0003);
+
+  @media (max-width: 60rem) {
+    -webkit-box-reflect: unset;
+    padding-top: 1.5rem;
+    height: 60vh;
+  }
+
+  @media (max-width: 60rem) {
+    -webkit-box-reflect: unset;
+    padding-top: 1.5rem;
+    height: 80vh;
+  }
 `;
 
 const ImageSide = styled.img`
   width: 100%;
-  height: 160vh;
+  height: 230vh;
   object-fit: cover;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
     url(${(props) => (props.side ? props.side : 'green')});
@@ -93,31 +155,71 @@ const ImageSide = styled.img`
   background-repeat: no-repeat;
 `;
 
+const SideImg = styled.img`
+  height: 10%;
+`;
+
+const ArticleTitle = styled.h2`
+  font-size: 2rem;
+  text-align: center;
+  padding-top: 3rem;
+  
+`;
+
 const Title = styled.div`
   font-size: 5rem;
   font-weight: bolder;
   letter-spacing: 0.5rem;
   color: white;
+
+  @media (max-width: 70rem) {
+    font-size: 1.8rem;
+  }
+
+  @media (max-width: 65rem) {
+    font-size: 1.8rem;
+  }
+  @media (max-width: 40rem) {
+    font-size: 1.4rem;
+  }
 `;
 
 const Main = styled.div`
   flex: 0.9;
 
-  .flex{
+  .flex {
+    display: flex;
+    align-items: flex-start;
 
-    display:flex;
-    align-items:center;
+    @media (max-width: 70rem) {
+      flex-direction: column;
+    }
   }
 
+  .line {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 2.5rem;
+  }
 `;
 
 const Content = styled.div`
- 
+  flex: 0.7;
+  padding-left: 2rem;
   color: #333;
   font-size: 1.8rem;
-  width: 70ch;
-  margin: 7rem auto;
-  
+  width: 75ch;
+  margin: 7rem;
+  text-align: justify;
+  z-index: 100;
+  line-height: 1.7;
+
+  @media (max-width: 100rem) {
+    margin: 7rem auto;
+  }
+  @media (max-width: 70rem) {
+    width: 55ch;
+    padding: 2.5rem;
+  }
 
   &::first-letter {
     font-size: 400%;
@@ -125,41 +227,94 @@ const Content = styled.div`
   }
 `;
 
+const ListItem = styled.li`
+  list-style: none;
+  color: #d3b013;
+  font-size: 1.7rem;
+  margin: 4rem 0;
+  cursor: pointer;
+  transition: 0.3s ease-in;
+
+  &:hover {
+    color: #999;
+    transform: translateX(3rem);
+  }
+`;
+
 const Contributor = styled.div`
-  text-align: center;
-  margin-top: 40vh;
+  margin-top: 6vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 `;
 
 const AutorImg = styled.img`
-  width: 10%;
+  width: 15%;
+
+  @media (max-width: 100rem) {
+    width: 20%;
+  }
+  @media (max-width: 60rem) {
+    width: 40%;
+  }
 `;
 
 const AutorInfo = styled.h1`
-  font-size: 3rem;
-  transform: translateX(-8rem);
+  font-size: 3.5rem;
+  position: absolute;
+  top: 35%;
+  left: 50%;
   font-family: 'Pacifico', sans-serif;
+
+  @media (max-width: 60rem) {
+    font-size: 3rem;
+  }
+
+  @media (max-width: 50rem) {
+    font-size: 2.5rem;
+  }
 `;
 
+const Navigation = styled.div`
+  margin-top: 14rem;
+  padding: 2rem;
+  flex: 0.2;
+  box-shadow: -1px 1px 1px 1px #9999;
 
-const Navigation= styled.div`
-   margin-left:5rem;
-   .singleBlog__link{
-     color:#333;
-     text-align:center;
-   }
+  @media (max-width: 70rem) {
+    padding-top: 2rem;
+    width: 60%;
+    display: block;
+    margin: auto;
+  }
+  @media (max-width: 50rem) {
+    padding-top: 2rem;
+    width: 70%;
+    display: block;
+    margin: auto;
+  }
 
+  .singleBlog__link {
+    color: #333;
+    text-align: center;
+    font-size: 1.8rem;
+    cursor: pointer;
+    font-weight: bold;
+    padding-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    transition: 0.3s ease-in;
 
-`
+    &:hover {
+      letter-spacing: 0.1rem;
+      transform: translateX(6px);
+    }
+  }
 
-const NavTitle=styled.h2`
-
-   font-size:2rem;
-
-
-`
-
+  .backIcon {
+    font-size: 3rem;
+  }
+`;
 
 export default SingleBlogPage;
