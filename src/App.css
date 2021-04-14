@@ -15,12 +15,11 @@ html {
 @media (min-width: 700px) {
   html {
     font-size: 62.5%;
-  
   }
 }
 
 body {
-  background:#ffff;
+  background: #ffff;
   font-family: 'Montserrat', sans-serif;
   line-height: 1.5;
 }
@@ -49,22 +48,42 @@ img {
   border-style: none;
 }
 
-
-
 textarea {
   width: 100%;
-  border:none;
+  border: none;
   outline: none;
   resize: none;
-  background: url('https://img.freepik.com/free-photo/design-space-paper-textured-background_53876-42312.jpg?size=626&ext=jpg&ga=GA1.2.1950443642.1616284800') center no-repeat;
+  background: url('https://img.freepik.com/free-photo/design-space-paper-textured-background_53876-42312.jpg?size=626&ext=jpg&ga=GA1.2.1950443642.1616284800')
+    center no-repeat;
   background-size: cover;
   font-weight: bold;
 }
 
-
-input{
+input {
   background: transparent;
-  border:none;
+  border: none;
   outline: none;
   color: rgb(175, 177, 190);
+}
+
+.blogPost__container {
+  display: grid;
+  grid-gap: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+  padding: 12rem;
+  background: #e6e6e6;
+}
+
+@media screen and (max-width: 97rem) {
+  .blogPost__container {
+     grid-gap:1rem;
+     padding: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 74rem) {
+  .blogPost__container {
+     grid-gap:3rem;
+     padding: 5rem;
+  }
 }

@@ -5,6 +5,7 @@ import { database } from '../firebase/config';
 import styled from 'styled-components';
 import { MdArrowBack } from 'react-icons/md/';
 
+
 function SingleBlogPage() {
   let { id } = useParams();
   const { singleBlog, setSingleBlog } = React.useContext(DevilContext);
@@ -21,7 +22,7 @@ function SingleBlogPage() {
       });
   }, [id]);
 
-  const listItems = [
+  const devilArticles = [
     {
       text: 'Istorija "bele" plaže',
       onClick: () => history.push('/singleBlogPage/IwPzzupyD8ShCIleetlX'),
@@ -84,7 +85,7 @@ function SingleBlogPage() {
             <ArticleTitle>Povezani članci</ArticleTitle>
             <SideImg src="https://lh3.googleusercontent.com/proxy/Ljoc4ccQVN05yOEJl1KC97hSDIMwNJrvxYaZbN-8bvSvSRmEjXcQVLkrsi1vFCtInSgPKjG3iVZeo-kuti84lQaa-Jb2OxcWJN33lezLEgv-o484C_vW_fkny1HZPT604O1Acyw" />
 
-            {listItems.map((item) => (
+            {devilArticles.map((item) => (
               <ListItem button key={item.text} onClick={item.onClick}>
                 {item.text}
               </ListItem>
@@ -93,7 +94,7 @@ function SingleBlogPage() {
         </div>
 
         <Contributor>
-          <AutorImg src="https://lh3.googleusercontent.com/proxy/gfa8YW5zkqhgmh3RC-GPxn0dn8qrWvD01VnboXGuJi2NMJqTplVCr91-a4Np9riWTrUZeiCBfcb0RN_Y5TaXt5uYDbWQBnGcghHoAMvajPoCsIEtUiMl8NeAD2wuxXr_ORt_INTxUcsP3a0G7g" />
+        <AutorImg src='/assets/autorLogo.png' alt='' />    
           <AutorInfo>{autor && autor}</AutorInfo>{' '}
         </Contributor>
       </Main>

@@ -1,13 +1,11 @@
 import React from 'react';
 
 import { DevilContext } from '../context';
-import { withRouter, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
-function CreateBlog(props) {
+function CreateBlog() {
   const {
-    user,
-    username,
     isLogged,
     handleChangeBlog,
     redirectPage,
@@ -253,4 +251,4 @@ const Label = styled.label`
   color: white;
 `;
 
-export default withRouter(CreateBlog);
+export default CreateBlog

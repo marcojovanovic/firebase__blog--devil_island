@@ -62,7 +62,8 @@ function Header(props) {
 
 const Wrapper = styled.div`
 
-background:orange;
+background:white;
+width:100%;
 
 `
 

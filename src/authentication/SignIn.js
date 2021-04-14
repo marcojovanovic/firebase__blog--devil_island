@@ -58,6 +58,7 @@ function SignUp(props) {
               <img
                 src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/user_icon_copy.png"
                 className="icon"
+                alt=''
               />
               <input
                 type="text"
@@ -76,6 +77,7 @@ function SignUp(props) {
               <img
                 src="https://beautysociety.com/wp-content/uploads/2017/12/email-envelope-icon.png"
                 className="icon icon__email"
+                alt=""
               />
               <input
                 type="email"
@@ -95,6 +97,7 @@ function SignUp(props) {
               <img
                 src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png"
                 className="icon"
+                alt=""
               />
               <input
                 type="password"

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { auth, database } from '../firebase/config';
+import {  database } from '../firebase/config';
 import { DevilContext } from '../context';
 import { withRouter, useParams } from 'react-router-dom';
 import styled from 'styled-components';
@@ -9,20 +9,10 @@ function UpdateBlog(props) {
   let { id } = useParams();
 
   const {
-    user,
-    setUser,
-    username,
     updateSingleBlog,
     setUpdateSingleBlog,
   } = React.useContext(DevilContext);
 
-  const handleLogOut = () => {
-    if (user) {
-      setUser(null);
-      auth.signOut().then(console.log('sign out'));
-      history.push('/login');
-    }
-  };
 
   function gettingBlogPost() {
     database
@@ -262,6 +252,13 @@ const FormField = styled.div`
   box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.11);
   padding: 2.2rem 3.5rem;
   margin: 3rem 0;
+
+  & input{
+      color:#333;
+      width:100%;
+
+
+  }
 
   @media (max-width: 100px) {
     max-width: 50% !important;

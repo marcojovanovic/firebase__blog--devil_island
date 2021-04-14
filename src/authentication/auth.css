@@ -69,20 +69,6 @@ button:hover {
   margin-top: 1.5rem;
 }
 
-.blogPost__content {
-  display: flex;
-  align-items: center;
-  padding: 3rem;
-}
-
-.btn-delete {
-  width: 30%;
-}
-
-.btn-update {
-  background: rgb(179, 179, 42);
-  margin-left: 4rem;
-}
 
 .error {
   color: white;
@@ -95,3 +81,4 @@ button:hover {
 .reveal {
   transform: translateX(0);
 }
+

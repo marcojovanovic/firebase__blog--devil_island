@@ -1,15 +1,15 @@
 import React from 'react';
 import './App.css';
+import './authentication/auth.css';
 
 import { DevilContext } from './context';
-import './authentication/auth.css';
+
 import {
   BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
 } from 'react-router-dom';
-
 
 import SignUp from './authentication/SignUp';
 import SignIn from './authentication/SignIn';
@@ -21,7 +21,8 @@ import {
   SingleBlogPage,
 } from './pages';
 
-import {Header, ScrollToTop} from './components'
+import { Header, ScrollToTop } from './components';
+import Footer from './components/Footer';
 
 function App() {
   const { redirectPage } = React.useContext(DevilContext);
@@ -33,7 +34,10 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Header />
-            <Home />
+            <div className="blogPost__container">
+              <Home />
+            </div>
+            <Footer />
           </Route>
           <Route exact path="/createBlog">
             {redirectPage ? <CreateBlog /> : <Redirect to="/" />}
@@ -49,7 +53,6 @@ function App() {
             <SignIn />
           </Route>
           <Route path="*" component={RedirectPage} />
-            
         </Switch>
       </Router>
     </div>
