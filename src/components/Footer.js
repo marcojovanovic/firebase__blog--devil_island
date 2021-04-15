@@ -15,7 +15,6 @@ function Footer() {
 
 const Wrapper = styled.div`
 
- min-width:100%;
  background:#ff923c;
  color:white;
  padding:4rem;

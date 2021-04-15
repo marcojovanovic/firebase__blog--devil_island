@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  margin:0;
+  padding: 0;
 }
 
 /* Full-width input fields */
@@ -25,29 +27,9 @@ hr {
   margin-bottom: 2.5rem;
 }
 
-/* Set a style for all buttons */
 
-.btn {
-  border: none;
-  font-weight: bolder;
-  color: white;
-  background: transparent;
-  width: 100%;
-  opacity: 0.9;
-  outline: none;
-  cursor: pointer;
-  padding: 0.4rem;
-}
 
-@media (max-width: 700px) {
-  .btn {
-    width: 50%;
-  }
-}
 
-button:hover {
-  opacity: 1;
-}
 
 /* Add padding to container elements */
 .container {

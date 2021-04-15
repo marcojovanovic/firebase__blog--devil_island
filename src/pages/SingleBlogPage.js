@@ -83,7 +83,7 @@ function SingleBlogPage() {
             <div className="line"></div>
 
             <ArticleTitle>Povezani članci</ArticleTitle>
-            <SideImg src="https://lh3.googleusercontent.com/proxy/Ljoc4ccQVN05yOEJl1KC97hSDIMwNJrvxYaZbN-8bvSvSRmEjXcQVLkrsi1vFCtInSgPKjG3iVZeo-kuti84lQaa-Jb2OxcWJN33lezLEgv-o484C_vW_fkny1HZPT604O1Acyw" />
+            <SideImg src="/assets/sideLine.png" />
 
             {devilArticles.map((item) => (
               <ListItem button key={item.text} onClick={item.onClick}>
@@ -230,7 +230,7 @@ const Content = styled.div`
 
 const ListItem = styled.li`
   list-style: none;
-  color: #d3b013;
+  color: #ff923c;
   font-size: 1.7rem;
   margin: 4rem 0;
   cursor: pointer;
@@ -314,7 +314,7 @@ const Navigation = styled.div`
   }
 
   .backIcon {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 `;
 

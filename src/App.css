@@ -7,7 +7,7 @@
 }
 
 html {
-  font-size: clamp(1rem, -0.875rem + 8.333vw, 2.5rem);
+  
   -webkit-text-size-adjust: 100%;
   line-height: 1.7;
 }
@@ -30,7 +30,6 @@ ul li {
 a {
   text-decoration: none !important;
   color: white;
-  font-size: 1.5rem;
   cursor: pointer;
 }
 
@@ -70,20 +69,18 @@ input {
   display: grid;
   grid-gap: 4rem;
   grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
-  padding: 12rem;
+  padding:clamp(12rem, 8rem + 4vw, 7rem);
   background: #e6e6e6;
 }
 
-@media screen and (max-width: 97rem) {
+
+
+@media screen and (max-width: 70rem) {
   .blogPost__container {
-     grid-gap:1rem;
-     padding: 1.5rem;
+     padding:1rem;
+     margin:auto;
+    
   }
 }
 
-@media screen and (max-width: 74rem) {
-  .blogPost__container {
-     grid-gap:3rem;
-     padding: 5rem;
-  }
-}
+

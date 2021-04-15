@@ -202,7 +202,9 @@ const Wrapper = styled.div`
       rgba(55, 55, 55, 0) 99%
     ),
     linear-gradient(0deg, #2625e3, #0bbaef);
-  height: 150vh;
+  height: 210vh;
+  padding:clamp(2rem, 4vw, 3rem);
+  
 `;
 
 const Button = styled.div`

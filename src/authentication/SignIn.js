@@ -244,6 +244,7 @@ const Button = styled.div`
   transition-property: background, color;
   transition-duration: 0.2s;
   margin-top: 1rem;
+  width:100%;
 
   &:hover {
     color: white;
