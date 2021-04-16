@@ -3,7 +3,6 @@ import { auth, database, timestamp } from './firebase/config';
 
 export const DevilContext = createContext(); // izvoz za komponente
 
-
 const DevilProvider = ({ children }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -36,26 +35,28 @@ const DevilProvider = ({ children }) => {
 
   // pratimo da li je user ulogovan ili ne
 
-
-
-
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         let currentUser = auth.currentUser;
 
-        console.log(currentUser);
+      
         setisLogged(true);
 
-        user.updateProfile({
+        currentUser.updateProfile({
+
           displayName: username,
         });
-      } else {
+
+        
+
+      }else {
         console.log('no user');
         setisLogged(false);
       }
     });
   }, [user]);
+
 
   useEffect(() => {
     setRedirectPage(true);
@@ -107,13 +108,6 @@ const DevilProvider = ({ children }) => {
     }, 7000);
   }, [error]);
 
-
-
-  
-
-
-
-
   return (
     <DevilContext.Provider
       value={{
@@ -141,7 +135,6 @@ const DevilProvider = ({ children }) => {
         setError,
         setSuccessMessage,
         successMessage,
-      
       }}
     >
       {children}

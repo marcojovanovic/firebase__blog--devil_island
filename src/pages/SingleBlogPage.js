@@ -5,7 +5,6 @@ import { database } from '../firebase/config';
 import styled from 'styled-components';
 import { MdArrowBack } from 'react-icons/md/';
 
-
 function SingleBlogPage() {
   let { id } = useParams();
   const { singleBlog, setSingleBlog } = React.useContext(DevilContext);
@@ -94,7 +93,7 @@ function SingleBlogPage() {
         </div>
 
         <Contributor>
-        <AutorImg src='/assets/autorLogo.png' alt='' />    
+          <AutorImg src="/assets/autorLogo.png" alt="" />
           <AutorInfo>{autor && autor}</AutorInfo>{' '}
         </Contributor>
       </Main>
@@ -157,32 +156,21 @@ const ImageSide = styled.img`
 `;
 
 const SideImg = styled.img`
-  height: 10%;
+  min-width: 50%;
+  text-align:center;
 `;
 
 const ArticleTitle = styled.h2`
   font-size: 2rem;
   text-align: center;
   padding-top: 3rem;
-  
 `;
 
 const Title = styled.div`
-  font-size: 5rem;
+  font-size: calc(5rem + 1vw);
   font-weight: bolder;
   letter-spacing: 0.5rem;
   color: white;
-
-  @media (max-width: 70rem) {
-    font-size: 1.8rem;
-  }
-
-  @media (max-width: 65rem) {
-    font-size: 1.8rem;
-  }
-  @media (max-width: 40rem) {
-    font-size: 1.4rem;
-  }
 `;
 
 const Main = styled.div`
@@ -194,7 +182,12 @@ const Main = styled.div`
 
     @media (max-width: 70rem) {
       flex-direction: column;
+      flex: 1;
     }
+  }
+
+  @media (max-width: 700px) {
+    flex: 1;
   }
 
   .line {
@@ -209,17 +202,37 @@ const Content = styled.div`
   color: #333;
   font-size: 1.8rem;
   width: 75ch;
-  margin: 7rem;
+  margin: 2rem 7rem 0 7rem;
   text-align: justify;
   z-index: 100;
   line-height: 1.7;
 
   @media (max-width: 100rem) {
-    margin: 7rem auto;
+    margin: 2rem auto;
+    padding: 4rem;
   }
-  @media (max-width: 70rem) {
-    width: 55ch;
-    padding: 2.5rem;
+  @media (max-width: 700px) {
+    margin: 3rem auto;
+    width:30ch;
+    padding: 8rem;
+  }
+
+  @media (max-width: 500px) {
+    margin: 3rem auto;
+    width:25ch;
+    padding: 4rem;
+  }
+
+  @media (max-width: 400px) {
+    margin: 3rem auto;
+    width:20ch;
+    padding: 4rem;
+  }
+
+  @media (max-width: 350px) {
+    margin: 3rem auto;
+    width:17ch;
+    padding: 4rem;
   }
 
   &::first-letter {
@@ -248,33 +261,25 @@ const Contributor = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
+
+
+  @media (max-width: 700rem) {
+    transform:translateX(-3.5rem);
+  }
 `;
 
 const AutorImg = styled.img`
-  width: 15%;
-
-  @media (max-width: 100rem) {
-    width: 20%;
-  }
-  @media (max-width: 60rem) {
-    width: 40%;
-  }
+  width:calc(9rem + 4vw);
 `;
 
 const AutorInfo = styled.h1`
-  font-size: 3.5rem;
+  font-size: calc(1.5rem + 1vw);
   position: absolute;
   top: 35%;
   left: 50%;
   font-family: 'Pacifico', sans-serif;
 
-  @media (max-width: 60rem) {
-    font-size: 3rem;
-  }
-
-  @media (max-width: 50rem) {
-    font-size: 2.5rem;
-  }
+  
 `;
 
 const Navigation = styled.div`
@@ -285,7 +290,7 @@ const Navigation = styled.div`
 
   @media (max-width: 70rem) {
     padding-top: 2rem;
-    width: 60%;
+    width:100%;
     display: block;
     margin: auto;
   }

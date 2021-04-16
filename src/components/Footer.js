@@ -15,12 +15,14 @@ function Footer() {
 
 const Wrapper = styled.div`
 
- background:#ff923c;
- color:white;
- padding:4rem;
+ background:white;
+ color:#333;
+ padding:6rem;
  text-align:center;
 
-
+ h2{
+   font-size:calc(0.8rem + 0.5vw);
+ }
 
 
 `

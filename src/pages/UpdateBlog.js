@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import {  database } from '../firebase/config';
 import { DevilContext } from '../context';
-import { withRouter, useParams } from 'react-router-dom';
+import { withRouter, useParams, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
 function UpdateBlog(props) {
@@ -11,7 +11,19 @@ function UpdateBlog(props) {
   const {
     updateSingleBlog,
     setUpdateSingleBlog,
+    isLogged
   } = React.useContext(DevilContext);
+
+
+  useEffect(() => {
+    gettingBlogPost();
+  }, [id]);
+
+
+  if (isLogged === false) {
+    return <Redirect to="/" />;
+  }
+
 
 
   function gettingBlogPost() {
@@ -24,10 +36,7 @@ function UpdateBlog(props) {
       });
   }
 
-  useEffect(() => {
-    gettingBlogPost();
-  }, [id]);
-
+  
   const handleUpdateChangeBlog = (e) => {
     setUpdateSingleBlog({
       ...updateSingleBlog,

@@ -52,13 +52,7 @@ hr {
 }
 
 
-.error {
-  color: white;
-  margin-bottom: 1rem;
-  transform: translateX(-20vh) translateY(20rem);
-  transition: 0.3s ease-in-out;
-  font-size: 2rem;
-}
+
 
 .reveal {
   transform: translateX(0);

@@ -22,13 +22,13 @@ function Home(props) {
       setSuccessMessage(true);
       setTimeout(() => {
         setSuccessMessage(false);
-      }, 2000);
+      }, 4000);
     }
   }, []);
 
   return (
     <>
-      {successMessage && <DisplaySuccesLogin />}
+    {successMessage && <DisplaySuccesLogin /> }
 
       {blogCollection &&
         blogCollection.map((item) => {
@@ -60,7 +60,7 @@ function Home(props) {
                           database.collection('blogPost').doc(id).delete()
                         )
                       }
-                      className="btn"
+                      
                     >
                       Obriši
                     </Button>

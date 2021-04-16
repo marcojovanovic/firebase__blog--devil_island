@@ -63,19 +63,20 @@ input {
   border: none;
   outline: none;
   color: rgb(175, 177, 190);
+  width:140%;
 }
 
 .blogPost__container {
   display: grid;
   grid-gap: 4rem;
   grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
-  padding:clamp(12rem, 8rem + 4vw, 7rem);
+  padding:10rem 8rem;
   background: #e6e6e6;
 }
 
 
 
-@media screen and (max-width: 70rem) {
+@media screen and (max-width: 750px) {
   .blogPost__container {
      padding:1rem;
      margin:auto;

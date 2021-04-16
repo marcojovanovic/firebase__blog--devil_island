@@ -4,6 +4,7 @@ import { DevilContext } from '../context';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
+
 import '../App.css';
 
 function SignUp(props) {
@@ -38,12 +39,16 @@ function SignUp(props) {
 
     setPassword('');
     setEmail('');
-    setUsername('');
+  
+   
   };
+
+
 
   return (
     <Wrapper>
-      <div className={`error ${error ? 'reveal' : ''}`}>{error}</div>
+       
+      <div className={`error ${error ? 'reveal error__back' : ''}`}>{error}</div>
       <Login>
         <form onSubmit={handleLogin}>
           <div className="container">
@@ -82,6 +87,7 @@ function SignUp(props) {
               <input
                 type="email"
                 name="email"
+                className='form_input'
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -190,6 +196,34 @@ const Wrapper = styled.div`
   .icon__email {
     width: 6.5%;
   }
+
+  .none{
+    display:none;
+  }
+
+  .btn{
+    width:100%;
+    border:none;
+    background:transparent;
+    color:white;
+  }
+
+  .error{
+    margin-bottom:2rem;
+    color:red;
+    font-size:1.5rem;
+  }
+
+  .error__back{
+    background:white;
+    padding:2rem 3rem;
+    border-radius:20px;
+
+  }
+
+  .reveal {
+  transform: translateX(0);
+}
 `;
 
 const Login = styled.div`
@@ -214,7 +248,7 @@ const FormField = styled.div`
 
   .form__input {
     background: rgb(50, 54, 74);
-    width: 100%;
+    width: 120%;
     color: rgb(175, 177, 190);
     outline: none;
 

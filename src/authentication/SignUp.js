@@ -45,7 +45,7 @@ function SignUp(props) {
 
   return (
     <Wrapper>
-        <div className={`error ${error ? 'reveal' : ''}`}>{error}</div>
+          <div className={`error ${error ? 'reveal error__back' : ''}`}>{error}</div>
       <Login>
         <form onSubmit={handleRegister}>
           <div className="container">
@@ -194,6 +194,33 @@ const Wrapper = styled.div`
   .icon__email {
     width: 6.5%;
   }
+
+  .btn{
+    width:100%;
+    border:none;
+    background:transparent;
+    color:white;
+  }
+
+
+  .error{
+    margin-bottom:2rem;
+    color:red;
+    font-size:1.5rem;
+  }
+
+  .error__back{
+    background:white;
+    padding:2rem 3rem;
+    border-radius:20px;
+
+  }
+
+  .reveal {
+  transform: translateX(0);
+}
+
+
 `;
 
 const Login = styled.div`
