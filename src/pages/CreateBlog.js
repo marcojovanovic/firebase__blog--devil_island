@@ -173,6 +173,16 @@ const Wrapper = styled.div`
     linear-gradient(214deg, rgb(83, 91, 235), rgb(76, 11, 174));
   height: 210vh;
   padding:clamp(2rem, 4vw, 3rem);
+
+  .btn{
+
+border:none;
+background:transparent;
+cursor: pointer;
+color:white;
+
+}   
+
 `;
 
 const Button = styled.div`

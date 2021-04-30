@@ -26,8 +26,9 @@ function UpdateBlog(props) {
 
 
 
-  function gettingBlogPost() {
-    database
+  async function gettingBlogPost() {
+    
+    await database
       .collection('blogPost')
       .doc(id)
       .get()
@@ -46,10 +47,10 @@ function UpdateBlog(props) {
 
   const { naslov, autor, imgURL, sadrzaj } = updateSingleBlog;
 
-  const handleUpdateBlog = (e) => {
+  const handleUpdateBlog = async (e) => {
     e.preventDefault();
 
-    database
+    await database
       .collection('blogPost')
       .doc(`${id}`)
       .update({
@@ -214,6 +215,16 @@ const Wrapper = styled.div`
   height: 210vh;
   padding:clamp(2rem, 4vw, 3rem);
   
+     .btn{
+
+      border:none;
+      background:transparent;
+      cursor: pointer;
+      color:white;
+
+     } 
+
+
 `;
 
 const Button = styled.div`
@@ -236,6 +247,8 @@ const Button = styled.div`
     background-size: 100% 100%;
     transform: translateY(-0.15em);
   }
+
+
 `;
 
 const FormContainer = styled.div`

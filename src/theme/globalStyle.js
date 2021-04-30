@@ -71,6 +71,37 @@ input {
   width:140%;
 }
 
+/* Full-width input fields */
+input[type='text'],
+input[type='password'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+}
+
+input[type='text']:focus,
+input[type='password']:focus {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  box-shadow: none ;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 2.5rem;
+}
+
+
+.text-center {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+
+
 .blogPost__container {
   display: grid;
   grid-gap: 4rem;

@@ -53,6 +53,9 @@ const DevilProvider = ({ children }) => {
       } else {
         console.log('no user');
         setisLogged(false);
+
+
+        
       }
     });
   }, [user]);
@@ -88,10 +91,10 @@ const DevilProvider = ({ children }) => {
     setBlog({ ...blog, [e.target.name]: e.target.value });
   };
 
-  const handleSubmitBlog = (e) => {
+  const handleSubmitBlog = async(e) => {
     e.preventDefault();
 
-    database
+   await database
       .collection('blogPost')
       .add({
         timestamp,

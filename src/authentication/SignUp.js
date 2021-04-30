@@ -3,6 +3,9 @@ import { auth } from '../firebase/config';
 import { DevilContext } from '../context';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import DisplayError from '../components/DisplayError'
 
 
 function SignUp(props) {
@@ -11,7 +14,6 @@ function SignUp(props) {
     setEmail,
     password,
     setPassword,
-    user,
     setUser,
     username,
     setUsername,
@@ -21,10 +23,10 @@ function SignUp(props) {
 
   let { history } = props;
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
-    auth
+    await auth
       .createUserWithEmailAndPassword(email, password)
       .then((authObj) => {
         setUser(authObj);
@@ -32,7 +34,6 @@ function SignUp(props) {
         history.push('/login');
       })
       .catch((err) => {
-        console.log(err.message);
         setError(err.message);
       });
     setPassword('');
@@ -40,15 +41,30 @@ function SignUp(props) {
     setUsername('');
   };
 
-  console.log(user);
+  console.log(error);
+
+  const notify = () => toast(<DisplayError />);
 
   return (
     <Wrapper>
-          <div className={`error ${error ? 'reveal error__back' : ''}`}>{error}</div>
+      {error && (
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      )}
+
       <Login>
         <form onSubmit={handleRegister}>
-          <div className="container">
-            <h1 className="signUp__title">Napravi svoj nalog</h1>
+          <SignUpContainer>
+            <SignUpTitle>Napravi svoj nalog</SignUpTitle>
 
             <hr />
 
@@ -112,12 +128,12 @@ function SignUp(props) {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </FormField>
-            <Button>
-              <button className="btn" type="submit">
+            <Button onClick={notify}>
+              <button className="sign__up--btn" type="submit">
                 Prijava
               </button>
             </Button>
-          </div>
+          </SignUpContainer>
         </form>
       </Login>
     </Wrapper>
@@ -176,52 +192,52 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction:column;
-
-  .signUp__title {
-    color:rgb(249, 77, 212);
-    padding-bottom: 1rem;
-  }
+  flex-direction: column;
 
   .icon {
-    width: 5%;
+    width: 5.5%;
     position: absolute;
     left: 10%;
     top: 20%;
-    
-   
   }
 
   .icon__email {
     width: 6.5%;
   }
 
-  .btn{
-    width:100%;
-    border:none;
-    background:transparent;
-    color:white;
+  .sign__up--btn {
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: white;
+    cursor: pointer;
   }
 
-
-  .error{
-    margin-bottom:2rem;
-    color:red;
-    font-size:1.5rem;
+  .error {
+    margin-bottom: 2rem;
+    color: red;
+    font-size: 1.5rem;
   }
 
-  .error__back{
-    background:white;
-    padding:2rem 3rem;
-    border-radius:20px;
-
+  .error__back {
+    background: white;
+    padding: 2rem 3rem;
+    border-radius: 20px;
   }
 
   .reveal {
-  transform: translateX(0);
-}
+    transform: translateX(0);
+  }
+`;
 
+const SignUpContainer = styled.div`
+  padding: 1.6rem;
+  max-width: 160rem;
+  margin: auto;
 
+  &:focus-within {
+    border: 0.05rem solid rgb(249, 77, 212);
+  }
 `;
 
 const Login = styled.div`
@@ -232,9 +248,9 @@ const Login = styled.div`
 const FormField = styled.div`
   color: rgb(175, 177, 190);
   width: 100%;
-  margin: 2rem 0;
+  margin: 2.5rem 0;
   background: rgb(50, 54, 74);
- 
+
   padding: 10px 65px;
   border-top: 2px solid rgb(57, 61, 82);
   border-bottom: 2px solid rgb(57, 61, 82);
@@ -244,12 +260,6 @@ const FormField = styled.div`
   box-shadow: none;
   position: relative;
 
-
-
-&:focus-within {
-  border: 1px solid rgb(249, 77, 212);
-}
-
   .form__input {
     background: rgb(50, 54, 74);
     color: rgb(175, 177, 190);
@@ -257,14 +267,18 @@ const FormField = styled.div`
     box-shadow: none;
     outline: none;
     border: none !important;
-
-  
   }
+`;
+
+const SignUpTitle = styled.h2`
+  color: rgb(249, 77, 212);
+  padding-bottom: 1rem;
+  font-size: calc(1.5rem + 0.5vw);
 `;
 
 const Label = styled.label`
   font-weight: 600;
-  font-size: 2.1rem;
+  font-size: calc(1.2rem + 0.5vw);
   color: white;
 `;
 
@@ -272,7 +286,7 @@ const Button = styled.div`
   border-radius: 50px;
   background: transparent;
   padding: 0.4rem;
-  border: 2px solid #dc6180;
+  border: 2px solid rgb(249, 77, 212);
   color: #dc6180;
   text-transform: uppercase;
   font-size: 11px;

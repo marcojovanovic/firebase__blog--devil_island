@@ -20,10 +20,10 @@ function SignUp(props) {
 
   let { history } = props;
 
-  const handleLogin = (e) => {
+  const handleLogin = async(e) => {
     e.preventDefault();
 
-    auth
+   await auth
       .signInWithEmailAndPassword(email, password)
       .then((authObj) => {
         setUser(authObj);
