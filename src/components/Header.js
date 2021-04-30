@@ -29,8 +29,6 @@ function Header(props) {
           displayName: username,
         });
 
-        console.log(currentUser);
-
         setUsername(currentUser.displayName);
       } else {
         console.log('no user');

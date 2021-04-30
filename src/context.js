@@ -7,9 +7,14 @@ const DevilProvider = ({ children }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [user, setUser] = useState(null);
+
+
   // protected routes
   const [isLogged, setisLogged] = useState(false);
 
+
+
+  
   const [username, setUsername] = useState('');
 
   const [updateBlog, setUpdateBlog] = useState(false);
@@ -40,32 +45,29 @@ const DevilProvider = ({ children }) => {
       if (user) {
         let currentUser = auth.currentUser;
 
-      
         setisLogged(true);
 
         currentUser.updateProfile({
-
           displayName: username,
         });
-
-        
-
-      }else {
+      } else {
         console.log('no user');
         setisLogged(false);
       }
     });
   }, [user]);
 
-
   useEffect(() => {
     setRedirectPage(true);
   }, [redirectPage]);
 
+
+  // izlistavanje iz firebase, home page display blogs
+
   useEffect(() => {
-    database
+   const unsub= database
       .collection('blogPost')
-      .orderBy('timestamp', 'desc')
+      .orderBy('timestamp', 'asc')
       .onSnapshot((snapshot) => {
         let documents = [];
 
@@ -75,9 +77,12 @@ const DevilProvider = ({ children }) => {
 
         setBlogCollection(documents);
       });
-  }, []);
 
-  // izlistavanje iz firebase
+
+      return ()=>unsub()
+  }, [blog]);
+
+  
 
   const handleChangeBlog = (e) => {
     setBlog({ ...blog, [e.target.name]: e.target.value });

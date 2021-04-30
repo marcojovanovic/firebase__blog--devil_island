@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css';
 import './authentication/auth.css';
+import GlobalStyle from './theme/globalStyle'
 
 import { DevilContext } from './context';
 
@@ -30,6 +30,7 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <GlobalStyle />
         <ScrollToTop />
         <Switch>
           <Route exact path="/">

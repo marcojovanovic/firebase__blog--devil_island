@@ -1,3 +1,8 @@
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+
+
 *,
 *::after,
 *::before {
@@ -75,7 +80,6 @@ input {
 }
 
 
-
 @media screen and (max-width: 750px) {
   .blogPost__container {
      padding:1rem;
@@ -85,3 +89,6 @@ input {
 }
 
 
+`;
+
+export default GlobalStyle

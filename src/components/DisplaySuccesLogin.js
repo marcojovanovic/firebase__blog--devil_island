@@ -5,11 +5,6 @@ import styled from 'styled-components'
 
 function DisplaySuccesLogin() {
 
-
-
-
-
-
   return (
     <LoginMessage>
       <h1>Uspesno ste se ulogovali...</h1>

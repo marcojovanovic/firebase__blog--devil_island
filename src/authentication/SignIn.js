@@ -5,8 +5,6 @@ import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 
-import '../App.css';
-
 function SignUp(props) {
   const {
     email,
@@ -246,18 +244,17 @@ const FormField = styled.div`
   box-shadow: none;
   position: relative;
 
+  &:focus-within {
+  border: 1px solid rgb(249, 77, 212);
+}
+
   .form__input {
     background: rgb(50, 54, 74);
     width: 120%;
     color: rgb(175, 177, 190);
     outline: none;
 
-    &:focus {
-      background: transparent;
-      box-shadow: none;
-      outline: none;
-      border: none !important;
-    }
+   
   }
 `;
 

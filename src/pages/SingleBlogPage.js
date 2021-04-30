@@ -103,6 +103,7 @@ function SingleBlogPage() {
 
 const Wrapper = styled.div`
   display: flex;
+  
 
   .singleBlog__side {
     flex: 0.1;
@@ -167,7 +168,7 @@ const ArticleTitle = styled.h2`
 `;
 
 const Title = styled.div`
-  font-size: calc(5rem + 1vw);
+  font-size: calc(3rem + 2vw);
   font-weight: bolder;
   letter-spacing: 0.5rem;
   color: white;
@@ -175,6 +176,7 @@ const Title = styled.div`
 
 const Main = styled.div`
   flex: 0.9;
+  
 
   .flex {
     display: flex;
@@ -201,38 +203,38 @@ const Content = styled.div`
   padding-left: 2rem;
   color: #333;
   font-size: 1.8rem;
-  width: 75ch;
+  width: 70ch;
   margin: 2rem 7rem 0 7rem;
   text-align: justify;
   z-index: 100;
   line-height: 1.7;
 
-  @media (max-width: 100rem) {
+  @media (max-width: 1000px) {
     margin: 2rem auto;
-    padding: 4rem;
+    padding:0 6rem;
   }
   @media (max-width: 700px) {
     margin: 3rem auto;
+    width:38ch;
+    padding:0 6rem;
+  }
+
+  @media (max-width: 600px) {
+    margin: 3rem auto;
     width:30ch;
-    padding: 8rem;
+    padding:0 4rem;
   }
 
   @media (max-width: 500px) {
     margin: 3rem auto;
     width:25ch;
-    padding: 4rem;
+    padding:0 4rem;
   }
 
   @media (max-width: 400px) {
     margin: 3rem auto;
-    width:20ch;
-    padding: 4rem;
-  }
-
-  @media (max-width: 350px) {
-    margin: 3rem auto;
-    width:17ch;
-    padding: 4rem;
+    width:21ch;
+    padding: 0 6rem;
   }
 
   &::first-letter {
@@ -290,15 +292,23 @@ const Navigation = styled.div`
 
   @media (max-width: 70rem) {
     padding-top: 2rem;
-    width:100%;
+    width:80%;
     display: block;
     margin: auto;
   }
   @media (max-width: 50rem) {
-    padding-top: 2rem;
+    padding-right: 5rem;
     width: 70%;
     display: block;
-    margin: auto;
+    margin:auto;
+   
+  }
+
+  @media (max-width: 40rem) {
+    margin-right: 8rem;
+    width: 50%;
+    display: block;
+   
   }
 
   .singleBlog__link {

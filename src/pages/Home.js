@@ -55,7 +55,7 @@ function Home(props) {
                   <ButtonContainer>
                     <Button
                       onClick={() =>
-                        alert(
+                        prompt(
                           'Post ce biti obrisan ?',
                           database.collection('blogPost').doc(id).delete()
                         )

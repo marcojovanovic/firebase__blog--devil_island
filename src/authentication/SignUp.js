@@ -4,7 +4,6 @@ import { DevilContext } from '../context';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
-import '../App.css';
 
 function SignUp(props) {
   const {
@@ -53,7 +52,7 @@ function SignUp(props) {
 
             <hr />
 
-            <Label htmlFor="email">
+            <Label htmlFor="name">
               <b>Korisnicko ime</b>
             </Label>
 
@@ -180,7 +179,7 @@ const Wrapper = styled.div`
   flex-direction:column;
 
   .signUp__title {
-    color: rgb(175, 177, 190);
+    color:rgb(249, 77, 212);
     padding-bottom: 1rem;
   }
 
@@ -189,6 +188,8 @@ const Wrapper = styled.div`
     position: absolute;
     left: 10%;
     top: 20%;
+    
+   
   }
 
   .icon__email {
@@ -233,7 +234,7 @@ const FormField = styled.div`
   width: 100%;
   margin: 2rem 0;
   background: rgb(50, 54, 74);
-  left: 0;
+ 
   padding: 10px 65px;
   border-top: 2px solid rgb(57, 61, 82);
   border-bottom: 2px solid rgb(57, 61, 82);
@@ -243,6 +244,12 @@ const FormField = styled.div`
   box-shadow: none;
   position: relative;
 
+
+
+&:focus-within {
+  border: 1px solid rgb(249, 77, 212);
+}
+
   .form__input {
     background: rgb(50, 54, 74);
     color: rgb(175, 177, 190);
@@ -251,12 +258,7 @@ const FormField = styled.div`
     outline: none;
     border: none !important;
 
-    &:focus {
-      background: transparent;
-      box-shadow: none;
-      outline: none;
-      border: none !important;
-    }
+  
   }
 `;
 

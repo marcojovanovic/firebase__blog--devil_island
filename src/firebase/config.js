@@ -2,9 +2,9 @@ import firebase from 'firebase'
 import 'firebase/auth';
 import 'firebase/firestore';
 
- 
+
 const firebaseConfig = {
-  apiKey: "AIzaSyBtl31Q58o2K4xq28zHMFTJ6UDfQygJ31o",
+  apiKey:  process.env.REACT_APP_API_KEY,
   authDomain: "fir-blog-b5835.firebaseapp.com",
   projectId: "fir-blog-b5835",
   storageBucket: "fir-blog-b5835.appspot.com",
