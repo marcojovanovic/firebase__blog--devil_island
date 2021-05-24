@@ -5,9 +5,11 @@ import { auth } from '../firebase/config';
 import styled from 'styled-components';
 import { GoPlus } from 'react-icons/go';
 import { VscGithubInverted } from 'react-icons/vsc';
+import { ToastContainer, toast } from 'react-toastify';
+import { DisplaySuccesLogin } from '../components';
 
 function Header(props) {
-  const { isLogged, setUser, username, setUsername } = React.useContext(
+  const { isLogged, setUser, username, user } = React.useContext(
     DevilContext
   );
 
@@ -19,25 +21,28 @@ function Header(props) {
     history.push('/');
   };
 
-  let user = null;
+  const notify = () => toast.success(<DisplaySuccesLogin />);
 
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        let currentUser = auth.currentUser;
-        currentUser.updateProfile({
-          displayName: username,
-        });
-
-        setUsername(currentUser.displayName);
-      } else {
-        console.log('no user');
-      }
-    });
+    if (user) {
+      notify();
+    }
   }, []);
 
   return (
     <Wrapper>
+      {user && (
+        <ToastContainer
+          position="top-left"
+          autoClose={3000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          closeOnClick
+          draggable
+          pauseOnHover
+        />
+      )}
+
       <ul className="navbar-nav">
         <Link className="nav-item " to="/">
           <NavImg src="assets/devilLogo.png" alt="" />

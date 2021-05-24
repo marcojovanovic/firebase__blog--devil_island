@@ -106,7 +106,7 @@ hr {
   display: grid;
   grid-gap: 4rem;
   grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
-  padding:10rem 8rem;
+  padding:3rem 8rem;
   background: #e6e6e6;
 }
 

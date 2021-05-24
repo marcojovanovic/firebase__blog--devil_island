@@ -5,8 +5,7 @@ import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import DisplayError from '../components/DisplayError'
-
+import Notification from '../components/Notification';
 
 function SignUp(props) {
   const {
@@ -35,7 +34,9 @@ function SignUp(props) {
       })
       .catch((err) => {
         setError(err.message);
+        notify();
       });
+
     setPassword('');
     setEmail('');
     setUsername('');
@@ -43,19 +44,17 @@ function SignUp(props) {
 
   console.log(error);
 
-  const notify = () => toast(<DisplayError />);
+  const notify = () => toast.error(<Notification />);
 
   return (
     <Wrapper>
       {error && (
         <ToastContainer
           position="top-center"
-          autoClose={5000}
+          autoClose={3000}
           hideProgressBar={true}
           newestOnTop={false}
           closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
           draggable
           pauseOnHover
         />
@@ -128,7 +127,7 @@ function SignUp(props) {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </FormField>
-            <Button onClick={notify}>
+            <Button>
               <button className="sign__up--btn" type="submit">
                 Prijava
               </button>

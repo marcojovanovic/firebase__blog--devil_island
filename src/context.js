@@ -12,9 +12,6 @@ const DevilProvider = ({ children }) => {
   // protected routes
   const [isLogged, setisLogged] = useState(false);
 
-
-
-  
   const [username, setUsername] = useState('');
 
   const [updateBlog, setUpdateBlog] = useState(false);
@@ -36,7 +33,6 @@ const DevilProvider = ({ children }) => {
 
   const [blogCollection, setBlogCollection] = useState('');
 
-  const [successMessage, setSuccessMessage] = useState(false);
 
   // pratimo da li je user ulogovan ili ne
 
@@ -141,8 +137,7 @@ const DevilProvider = ({ children }) => {
         handleSubmitBlog,
         error,
         setError,
-        setSuccessMessage,
-        successMessage,
+       
       }}
     >
       {children}

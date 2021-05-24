@@ -3,32 +3,24 @@ import React, { useEffect } from 'react';
 import { database } from '../firebase/config';
 import { DevilContext } from '../context';
 import { withRouter, Link } from 'react-router-dom';
-import { DisplaySuccesLogin } from '../components';
+
 import styled from 'styled-components';
+import { Redirect } from 'react-router-dom';
 
 import '../authentication/auth.css';
 
-function Home(props) {
-  const {
-    user,
-    isLogged,
-    blogCollection,
-    successMessage,
-    setSuccessMessage,
-  } = React.useContext(DevilContext);
+function Home() {
+  const { isLogged, blogCollection, } = React.useContext(DevilContext);
 
-  useEffect(() => {
-    if (user) {
-      setSuccessMessage(true);
-      setTimeout(() => {
-        setSuccessMessage(false);
-      }, 4000);
-    }
-  }, []);
+
+  
+
+
+
 
   return (
+    
     <>
-    {successMessage && <DisplaySuccesLogin /> }
 
       {blogCollection &&
         blogCollection.map((item) => {
@@ -46,10 +38,11 @@ function Home(props) {
 
                 <Autor>
                   <AutorImg src="/assets/autorLogo.png" alt="" />
-
-                  {autor} <p className='autor__time'>{new Date(timestamp?.toDate()).toLocaleString()}</p>
+                  {autor}{' '}
+                  <p className="autor__time">
+                    {new Date(timestamp?.toDate()).toLocaleString()}
+                  </p>
                 </Autor>
-              
 
                 {isLogged && (
                   <ButtonContainer>
@@ -60,14 +53,11 @@ function Home(props) {
                           database.collection('blogPost').doc(id).delete()
                         )
                       }
-                      
                     >
                       Obriši
                     </Button>
                     <Button>
-                      <Link to={`/updateBlog/${id}`}>
-                        Izmeni
-                      </Link>
+                      <Link to={`/updateBlog/${id}`}>Izmeni</Link>
                     </Button>
                   </ButtonContainer>
                 )}
@@ -81,7 +71,7 @@ function Home(props) {
 
 const BlogTitle = styled.h2`
   position: absolute;
-  line-height:1.1;
+  line-height: 1.1;
   top: 20rem;
   left: 40px;
   color: white;
@@ -89,9 +79,8 @@ const BlogTitle = styled.h2`
   font-size: calc(1.5rem + 0.8vw);
   text-transform: capitalize;
 
-
   @media (max-width: 700px) {
-    top:10rem;
+    top: 10rem;
   }
 `;
 
@@ -103,7 +92,7 @@ const BlogText = styled.p`
   color: white;
 
   @media (max-width: 700px) {
-    top:13rem;
+    top: 13rem;
   }
 `;
 
@@ -113,15 +102,11 @@ const Autor = styled.h2`
   position: relative;
   font-size: calc(1rem + 0.4vw);
 
-
-  .autor__time{
-    color:grey;
+  .autor__time {
+    color: grey;
     font-size: calc(0.6rem + 0.4vw);
   }
-
 `;
-
-
 
 const BackImage = styled.img`
   max-width: 100%;
@@ -133,7 +118,7 @@ const BackImage = styled.img`
   background-size: cover;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
-  border:none !important;
+  border: none !important;
 `;
 
 const Button = styled.div`
@@ -149,17 +134,14 @@ const Button = styled.div`
   margin-top: 1rem;
   width: 25%;
 
-
   @media (max-width: 700px) {
-    width:30%;
-    margin:auto;
-    margin-bottom:1rem;
+    width: 30%;
+    margin: auto;
+    margin-bottom: 1rem;
   }
 
   @media (max-width: 500px) {
-    width:50%;
-    
-    
+    width: 50%;
   }
 
   &:hover {
@@ -170,11 +152,8 @@ const Button = styled.div`
 `;
 
 const ButtonContainer = styled.div`
-
-@media (max-width: 700px) {
-    
+  @media (max-width: 700px) {
   }
-   
 `;
 
 const BlogPostContent = styled.div`
@@ -183,39 +162,36 @@ const BlogPostContent = styled.div`
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
   position: relative;
-  border:none;
-  padding-bottom:calc(2rem + 0.2vw);
- 
+  border: none;
+  padding-bottom: calc(2rem + 0.2vw);
 
   @media (max-width: 74rem) {
     margin: auto;
   }
 
   @media (max-width: 700px) {
-    width:85%;
+    width: 85%;
   }
 
   @media (max-width: 540px) {
-    width:75%;
-    margin-right:50%;
+    width: 75%;
+    margin-right: 50%;
   }
 
   @media (max-width: 440px) {
-    width:68%;
-    margin-right:50%;
+    width: 68%;
+    margin-right: 50%;
   }
 
   @media (max-width: 400px) {
-    width:60%;
-    margin-right:50%;
+    width: 60%;
+    margin-right: 50%;
   }
 
   @media (max-width: 350px) {
-    width:50%;
-    margin-right:50%;
+    width: 50%;
+    margin-right: 50%;
   }
-
-
 `;
 
 const AutorImg = styled.img`

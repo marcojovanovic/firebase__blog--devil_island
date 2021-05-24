@@ -32,7 +32,7 @@ function SingleBlogPage() {
     },
     {
       text: 'Hoteli',
-      onClick: () => history.push('/singleBlogPage/ewHp5BvGYtqeVs2ZbTAF'),
+      onClick: () => history.push('/singleBlogPage/9Yvvbnr2SoQ3wc84GeHY'),
     },
     {
       text: 'Najopasnije obale Đavoljeg ostrva',

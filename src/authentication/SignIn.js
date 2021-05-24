@@ -2,7 +2,9 @@ import React from 'react';
 import { auth } from '../firebase/config';
 import { DevilContext } from '../context';
 import { withRouter } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 import styled from 'styled-components';
+import Notification from '../components/Notification';
 
 
 function SignUp(props) {
@@ -31,47 +33,39 @@ function SignUp(props) {
         history.push('/');
       })
       .catch((err) => {
-        console.log(err.message);
         setError(err.message);
+        notify();  
       });
 
+  
     setPassword('');
     setEmail('');
   
    
   };
 
+  const notify = () => toast.error(<Notification  />);
 
 
   return (
     <Wrapper>
        
-      <div className={`error ${error ? 'reveal error__back' : ''}`}>{error}</div>
+       {error && (
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          closeOnClick
+          draggable
+          pauseOnHover
+        />
+      )}
       <Login>
         <form onSubmit={handleLogin}>
           <div className="container">
             <h1 className="signIn__title">Prijava</h1>
-
             <hr />
-
-            <Label htmlFor="email">
-              <b>Autor</b>
-            </Label>
-            <FormField>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/user_icon_copy.png"
-                className="icon"
-                alt=''
-              />
-              <input
-                type="text"
-                name="email"
-                required
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                autoComplete="off"
-              />
-            </FormField>
 
             <Label htmlFor="email">
               <b>Email</b>
@@ -171,7 +165,7 @@ const Wrapper = styled.div`
       transparent 32px
     ),
     linear-gradient(90deg, rgb(41, 27, 158), rgb(249, 77, 212));
-  padding: 2rem;
+  padding: 5rem;
   color: white;
   height: 100vh;
   display: flex;

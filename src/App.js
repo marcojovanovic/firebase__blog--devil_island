@@ -1,6 +1,6 @@
 import React from 'react';
 import './authentication/auth.css';
-import GlobalStyle from './theme/globalStyle'
+import GlobalStyle from './theme/globalStyle';
 
 import { DevilContext } from './context';
 
@@ -23,6 +23,7 @@ import {
 
 import { Header, ScrollToTop } from './components';
 import Footer from './components/Footer';
+import BlogTitle from './components/BlogTitle';
 
 function App() {
   const { redirectPage } = React.useContext(DevilContext);
@@ -35,6 +36,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Header />
+            <BlogTitle />
             <div className="blogPost__container">
               <Home />
             </div>
