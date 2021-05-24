@@ -100,26 +100,6 @@ hr {
   margin-top: 1.5rem;
 }
 
-
-
-.blogPost__container {
-  display: grid;
-  grid-gap: 4rem;
-  grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
-  padding:3rem 8rem;
-  background: #e6e6e6;
-}
-
-
-@media screen and (max-width: 750px) {
-  .blogPost__container {
-     padding:1rem;
-     margin:auto;
-    
-  }
-}
-
-
 `;
 
-export default GlobalStyle
+export default GlobalStyle;

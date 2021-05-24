@@ -6,7 +6,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import styled from 'styled-components';
 import Notification from '../components/Notification';
 
-
 function SignUp(props) {
   const {
     email,
@@ -14,18 +13,16 @@ function SignUp(props) {
     password,
     setPassword,
     setUser,
-    username,
-    setUsername,
     error,
     setError,
   } = React.useContext(DevilContext);
 
   let { history } = props;
 
-  const handleLogin = async(e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-   await auth
+    await auth
       .signInWithEmailAndPassword(email, password)
       .then((authObj) => {
         setUser(authObj);
@@ -34,23 +31,18 @@ function SignUp(props) {
       })
       .catch((err) => {
         setError(err.message);
-        notify();  
+        notify();
       });
 
-  
     setPassword('');
     setEmail('');
-  
-   
   };
 
-  const notify = () => toast.error(<Notification  />);
-
+  const notify = () => toast.error(<Notification />);
 
   return (
     <Wrapper>
-       
-       {error && (
+      {error && (
         <ToastContainer
           position="top-center"
           autoClose={3000}
@@ -63,23 +55,24 @@ function SignUp(props) {
       )}
       <Login>
         <form onSubmit={handleLogin}>
-          <div className="container">
-            <h1 className="signIn__title">Prijava</h1>
+          <FormContainer>
+            <LoginTitle>Prijava</LoginTitle>
             <hr />
 
             <Label htmlFor="email">
               <b>Email</b>
             </Label>
             <FormField>
-              <img
+              <Icon
                 src="https://beautysociety.com/wp-content/uploads/2017/12/email-envelope-icon.png"
-                className="icon icon__email"
+                className="icon__email"
                 alt=""
               />
+
               <input
                 type="email"
                 name="email"
-                className='form_input'
+                className="form_input"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -92,9 +85,8 @@ function SignUp(props) {
             </Label>
 
             <FormField>
-              <img
+              <Icon
                 src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png"
-                className="icon"
                 alt=""
               />
               <input
@@ -107,12 +99,8 @@ function SignUp(props) {
               />
             </FormField>
 
-            <Button>
-              <button className="btn" type="submit">
-                Uloguj se
-              </button>
-            </Button>
-          </div>
+            <Button type="submit">Uloguj se</Button>
+          </FormContainer>
         </form>
       </Login>
     </Wrapper>
@@ -173,49 +161,33 @@ const Wrapper = styled.div`
   align-items: center;
   flex-direction: column;
 
-  .signIn__title {
-    color:rgb(249, 77, 212);
-    padding-bottom: 1rem;
-  }
-
-  .icon {
-    width: 5%;
-    position: absolute;
-    left: 10%;
-    top: 20%;
-  }
-
   .icon__email {
     width: 6.5%;
+
+    @media (max-width: 500px) {
+      width: 9%;
+    }
   }
+`;
 
-  .none{
-    display:none;
+const FormContainer = styled.div`
+  padding: calc(1vh + 1vw);
+`;
+
+const Icon = styled.img`
+  width: 5%;
+  position: absolute;
+  left: 10%;
+  top: 20%;
+
+  @media (max-width: 500px) {
+    width: 9%;
   }
+`;
 
-  .btn{
-    width:100%;
-    border:none;
-    background:transparent;
-    color:white;
-  }
-
-  .error{
-    margin-bottom:2rem;
-    color:red;
-    font-size:1.5rem;
-  }
-
-  .error__back{
-    background:white;
-    padding:2rem 3rem;
-    border-radius:20px;
-
-  }
-
-  .reveal {
-  transform: translateX(0);
-}
+const LoginTitle = styled.h1`
+  color: rgb(249, 77, 212);
+  padding-bottom: 1rem;
 `;
 
 const Login = styled.div`
@@ -239,16 +211,14 @@ const FormField = styled.div`
   position: relative;
 
   &:focus-within {
-  border: 1px solid rgb(249, 77, 212);
-}
+    border: 1px solid rgb(249, 77, 212);
+  }
 
   .form__input {
     background: rgb(50, 54, 74);
     width: 120%;
     color: rgb(175, 177, 190);
     outline: none;
-
-   
   }
 `;
 
@@ -258,7 +228,7 @@ const Label = styled.label`
   color: white;
 `;
 
-const Button = styled.div`
+const Button = styled.button`
   border-radius: 5rem;
   background: transparent;
   padding: 0.4rem;
@@ -269,7 +239,10 @@ const Button = styled.div`
   transition-property: background, color;
   transition-duration: 0.2s;
   margin-top: 1rem;
-  width:100%;
+  width: 100%;
+  background: transparent;
+  color: white;
+  text-align: center;
 
   &:hover {
     color: white;

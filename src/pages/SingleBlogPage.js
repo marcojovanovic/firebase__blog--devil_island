@@ -64,22 +64,24 @@ function SingleBlogPage() {
 
   return (
     <Wrapper>
-      <div className="singleBlog__side">
+      <SideBlogImg>
         <ImageSide side={imgURL} alt="" />
-      </div>
+      </SideBlogImg>
       <Main>
         <Heading back={imgURL}>
-          <div className="singleBlog__item">
+          <SingleBlogItem>
             <Title>{naslov && naslov}</Title>
-          </div>
+          </SingleBlogItem>
         </Heading>
-        <div className="flex">
+        <SideContent>
           <Content>{sadrzaj && sadrzaj}</Content>
           <Navigation>
-            <Link className="singleBlog__link" to="/">
-              <MdArrowBack className="backIcon" /> Povratak na glavnu stranu
+            <Link to="/">
+              <SideBlogLink>
+                <MdArrowBack size={30} /> Povratak na glavnu stranu
+              </SideBlogLink>
             </Link>
-            <div className="line"></div>
+            <SideLine></SideLine>
 
             <ArticleTitle>Povezani članci</ArticleTitle>
             <SideImg src="/assets/sideLine.png" />
@@ -90,7 +92,7 @@ function SingleBlogPage() {
               </ListItem>
             ))}
           </Navigation>
-        </div>
+        </SideContent>
 
         <Contributor>
           <AutorImg src="/assets/autorLogo.png" alt="" />
@@ -103,19 +105,6 @@ function SingleBlogPage() {
 
 const Wrapper = styled.div`
   display: flex;
-  
-
-  .singleBlog__side {
-    flex: 0.1;
-  }
-
-  .singleBlog__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    justify-content: center;
-  }
 `;
 
 const Heading = styled.div`
@@ -144,6 +133,14 @@ const Heading = styled.div`
   }
 `;
 
+const SingleBlogItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+`;
+
 const ImageSide = styled.img`
   width: 100%;
   height: 230vh;
@@ -156,9 +153,13 @@ const ImageSide = styled.img`
   background-repeat: no-repeat;
 `;
 
+const SideBlogImg = styled.div`
+  flex: 0.1;
+`;
+
 const SideImg = styled.img`
   min-width: 50%;
-  text-align:center;
+  text-align: center;
 `;
 
 const ArticleTitle = styled.h2`
@@ -176,26 +177,23 @@ const Title = styled.div`
 
 const Main = styled.div`
   flex: 0.9;
-  
-
-  .flex {
-    display: flex;
-    align-items: flex-start;
-
-    @media (max-width: 70rem) {
-      flex-direction: column;
-      flex: 1;
-    }
-  }
-
   @media (max-width: 700px) {
     flex: 1;
   }
+`;
 
-  .line {
-    border: 1px solid #f1f1f1;
-    margin-bottom: 2.5rem;
+const SideContent = styled.div`
+  display: flex;
+  align-items: flex-start;
+
+  @media (max-width: 70rem) {
+    flex-direction: column;
+    flex: 1;
   }
+`;
+const SideLine = styled.div`
+  border: 1px solid #f1f1f1;
+  margin-bottom: 2.5rem;
 `;
 
 const Content = styled.div`
@@ -211,29 +209,29 @@ const Content = styled.div`
 
   @media (max-width: 1000px) {
     margin: 2rem auto;
-    padding:0 6rem;
+    padding: 0 6rem;
   }
   @media (max-width: 700px) {
     margin: 3rem auto;
-    width:38ch;
-    padding:0 6rem;
+    width: 38ch;
+    padding: 0 6rem;
   }
 
   @media (max-width: 600px) {
     margin: 3rem auto;
-    width:30ch;
-    padding:0 4rem;
+    width: 30ch;
+    padding: 0 4rem;
   }
 
   @media (max-width: 500px) {
     margin: 3rem auto;
-    width:25ch;
-    padding:0 4rem;
+    width: 25ch;
+    padding: 0 4rem;
   }
 
   @media (max-width: 400px) {
     margin: 3rem auto;
-    width:21ch;
+    width: 21ch;
     padding: 0 6rem;
   }
 
@@ -264,14 +262,13 @@ const Contributor = styled.div`
   justify-content: center;
   position: relative;
 
-
   @media (max-width: 700rem) {
-    transform:translateX(-3.5rem);
+    transform: translateX(-3.5rem);
   }
 `;
 
 const AutorImg = styled.img`
-  width:calc(9rem + 4vw);
+  width: calc(9rem + 4vw);
 `;
 
 const AutorInfo = styled.h1`
@@ -280,8 +277,6 @@ const AutorInfo = styled.h1`
   top: 35%;
   left: 50%;
   font-family: 'Pacifico', sans-serif;
-
-  
 `;
 
 const Navigation = styled.div`
@@ -292,7 +287,7 @@ const Navigation = styled.div`
 
   @media (max-width: 70rem) {
     padding-top: 2rem;
-    width:80%;
+    width: 80%;
     display: block;
     margin: auto;
   }
@@ -300,36 +295,30 @@ const Navigation = styled.div`
     padding-right: 5rem;
     width: 70%;
     display: block;
-    margin:auto;
-   
+    margin: auto;
   }
 
   @media (max-width: 40rem) {
     margin-right: 8rem;
     width: 50%;
     display: block;
-   
   }
+`;
 
-  .singleBlog__link {
-    color: #333;
-    text-align: center;
-    font-size: 1.8rem;
-    cursor: pointer;
-    font-weight: bold;
-    padding-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    transition: 0.3s ease-in;
+const SideBlogLink = styled.p`
+  color: #333;
+  text-align: center;
+  font-size: 1.8rem;
+  cursor: pointer;
+  font-weight: bold;
+  padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  transition: 0.3s ease-in;
 
-    &:hover {
-      letter-spacing: 0.1rem;
-      transform: translateX(6px);
-    }
-  }
-
-  .backIcon {
-    font-size: 2.5rem;
+  &:hover {
+    letter-spacing: 0.1rem;
+    transform: translateX(6px);
   }
 `;
 

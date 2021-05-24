@@ -5,9 +5,7 @@ import { DevilContext } from '../context';
 import { withRouter, Link } from 'react-router-dom';
 
 import styled from 'styled-components';
-import { Redirect } from 'react-router-dom';
 
-import '../authentication/auth.css';
 
 function Home() {
   const { isLogged, blogCollection } = React.useContext(DevilContext);

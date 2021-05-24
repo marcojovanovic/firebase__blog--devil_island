@@ -72,9 +72,8 @@ function SignUp(props) {
             </Label>
 
             <FormField>
-              <img
+              <Icon
                 src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/user_icon_copy.png"
-                className="icon"
                 alt=""
               />
               <input
@@ -92,9 +91,9 @@ function SignUp(props) {
               <b>Email</b>
             </Label>
             <FormField>
-              <img
+              <Icon
                 src="https://beautysociety.com/wp-content/uploads/2017/12/email-envelope-icon.png"
-                className="icon icon__email"
+                className="icon__email"
                 alt=""
               />
               <input
@@ -113,9 +112,8 @@ function SignUp(props) {
             </Label>
 
             <FormField>
-              <img
+              <Icon
                 src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png"
-                className="icon"
                 alt=""
               />
               <input
@@ -127,11 +125,7 @@ function SignUp(props) {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </FormField>
-            <Button>
-              <button className="sign__up--btn" type="submit">
-                Prijava
-              </button>
-            </Button>
+            <Button type="submit">Prijava</Button>
           </SignUpContainer>
         </form>
       </Login>
@@ -193,39 +187,12 @@ const Wrapper = styled.div`
   align-items: center;
   flex-direction: column;
 
-  .icon {
-    width: 5.5%;
-    position: absolute;
-    left: 10%;
-    top: 20%;
-  }
-
   .icon__email {
     width: 6.5%;
-  }
 
-  .sign__up--btn {
-    width: 100%;
-    border: none;
-    background: transparent;
-    color: white;
-    cursor: pointer;
-  }
-
-  .error {
-    margin-bottom: 2rem;
-    color: red;
-    font-size: 1.5rem;
-  }
-
-  .error__back {
-    background: white;
-    padding: 2rem 3rem;
-    border-radius: 20px;
-  }
-
-  .reveal {
-    transform: translateX(0);
+    @media (max-width: 500px) {
+      width: 9%;
+    }
   }
 `;
 
@@ -239,9 +206,25 @@ const SignUpContainer = styled.div`
   }
 `;
 
+const Icon = styled.img`
+  width: 5%;
+  position: absolute;
+  left: 10%;
+  top: 20%;
+
+  @media (max-width: 500px) {
+    width: 9%;
+  }
+`;
+
 const Login = styled.div`
   background: linear-gradient(45deg, #35394a 0%, #1f222e 100%);
   padding: 1rem;
+`;
+
+const LoginTitle = styled.h1`
+  color: rgb(249, 77, 212);
+  padding-bottom: 1rem;
 `;
 
 const FormField = styled.div`
@@ -281,7 +264,7 @@ const Label = styled.label`
   color: white;
 `;
 
-const Button = styled.div`
+const Button = styled.button`
   border-radius: 50px;
   background: transparent;
   padding: 0.4rem;
@@ -292,6 +275,11 @@ const Button = styled.div`
   transition-property: background, color;
   transition-duration: 0.2s;
   margin-top: 1rem;
+  width: 100%;
+
+  background: transparent;
+  color: white;
+  cursor: pointer;
 
   &:hover {
     color: white;
