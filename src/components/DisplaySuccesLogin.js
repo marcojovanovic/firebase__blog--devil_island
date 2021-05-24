@@ -14,8 +14,4 @@ const LoginMessage = styled.h5`
   font-size: 1.7rem;
 `;
 
-const LoginContent = styled.div`
-  
-`;
-
 export default DisplaySuccesLogin;

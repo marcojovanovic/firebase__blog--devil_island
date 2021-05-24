@@ -9,9 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { DisplaySuccesLogin } from '../components';
 
 function Header(props) {
-  const { isLogged, setUser, username, user } = React.useContext(
-    DevilContext
-  );
+  const { isLogged, setUser, username, user } = React.useContext(DevilContext);
 
   let { history } = props;
 
@@ -43,16 +41,18 @@ function Header(props) {
         />
       )}
 
-      <ul className="navbar-nav">
-        <Link className="nav-item " to="/">
-          <NavImg src="assets/devilLogo.png" alt="" />
-          <span>Islands </span>
-          <LineImg
-            src="https://www.shreejichikki.com/wp-content/uploads/2014/04/vertical-line.png"
-            alt=""
-          />
+      <NavbarNav>
+        <Link to="/">
+          <NavbarLogoContent>
+            <NavImg src="assets/devilLogo.png" alt="" />
+            <NavSpan>Islands </NavSpan>
+            <LineImg
+              src="https://www.shreejichikki.com/wp-content/uploads/2014/04/vertical-line.png"
+              alt=""
+            />
+          </NavbarLogoContent>
         </Link>
-        <h1 className="user">{username}</h1>
+
         {!isLogged && (
           <NavLog>
             <NavbarSign>
@@ -67,24 +67,27 @@ function Header(props) {
 
         {isLogged && (
           <NavItem>
-            <Link className="nav-link" to="/createBlog">
-              <GoPlus size={30} />
-              Dodaj Blog
+            <Link to="/createBlog">
+              <NavLink>
+                <GoPlus size={30} />
+                Dodaj Blog
+              </NavLink>
             </Link>
           </NavItem>
         )}
         <NavItem className="nav__hide">
-          <Link className="nav-link" to="/createBlog">
-            <VscGithubInverted size={30} />
-            <p>Dokumentacija</p>
+          <Link to="/createBlog">
+            <NavLink>
+              <VscGithubInverted size={30} />
+              <p>Dokumentacija</p>
+            </NavLink>
           </Link>
         </NavItem>
-      </ul>
+      </NavbarNav>
 
       {isLogged && (
-        <Button onClick={handleLogOut} type="submit" className="signupbtn">
-          {' '}
-          ODJAVI SE{' '}
+        <Button onClick={handleLogOut} type="submit">
+          ODJAVI SE
         </Button>
       )}
     </Wrapper>
@@ -99,65 +102,9 @@ const Wrapper = styled.div`
   position: relative;
   margin: auto;
 
-  .navbar-nav {
-    display: flex;
-    width: 100%;
-    padding-left: calc(8rem + 2vw);
-    justify-content: space-around;
-    margin: auto;
-    align-items: center;
-
-    @media (max-width: 1100px) {
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 0;
-      margin-left: 20% !important;
-    }
-  }
-
-  .navbar__sign {
-    font-size: calc(0.4rem + 0.4vw);
-    margin-bottom: 1rem;
-  }
-
-  .nav-link {
-    color: white;
-    font-size: calc(1rem + 0.4vw);
-    display: flex;
-    align-items: center;
-  }
-
-  .nav-item {
-    display: flex;
-    align-items: center;
-  }
-
-  .nav-item span {
-    color: #f44336;
-    font-size: calc(2.7rem + 0.3vw);
-    margin-left: 3rem;
-    font-family: 'Pacifico', sans-serif;
-    font-style: italic;
-  }
-
-  .nav-item p {
-    margin-left: 2rem;
-  }
-
   .nav__hide {
     @media (max-width: 1100px) {
       display: none;
-    }
-  }
-
-  .user {
-    color: red;
-    position: absolute;
-    top: 40%;
-    right: 60%;
-
-    @media (max-width: 700px) {
-      top: 60%;
     }
   }
 `;
@@ -174,6 +121,42 @@ const NavbarSign = styled.div`
     box-shadow: 0 0.5em 0.5em -0.4em #ff923cba;
     background-size: 100% 100%;
   }
+`;
+
+const NavbarNav = styled.ul`
+  display: flex;
+  width: 100%;
+  padding-left: calc(8rem + 2vw);
+  justify-content: space-around;
+  margin: auto;
+  align-items: center;
+
+  @media (max-width: 1100px) {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    margin-left: 20% !important;
+  }
+`;
+
+const NavbarLogoContent = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const NavSpan = styled.span`
+  color: #f44336;
+  font-size: calc(2.7rem + 0.3vw);
+  margin-left: 3rem;
+  font-family: 'Pacifico', sans-serif;
+  font-style: italic;
+`;
+
+const NavLink = styled.a`
+  color: white;
+  font-size: calc(1rem + 0.4vw);
+  display: flex;
+  align-items: center;
 `;
 
 const NavItem = styled.li`

@@ -10,18 +10,10 @@ import { Redirect } from 'react-router-dom';
 import '../authentication/auth.css';
 
 function Home() {
-  const { isLogged, blogCollection, } = React.useContext(DevilContext);
-
-
-  
-
-
-
+  const { isLogged, blogCollection } = React.useContext(DevilContext);
 
   return (
-    
     <>
-
       {blogCollection &&
         blogCollection.map((item) => {
           const { naslov, sadrzaj, imgURL, autor, id, timestamp } = item;
@@ -39,9 +31,9 @@ function Home() {
                 <Autor>
                   <AutorImg src="/assets/autorLogo.png" alt="" />
                   {autor}{' '}
-                  <p className="autor__time">
+                  <AutorTime>
                     {new Date(timestamp?.toDate()).toLocaleString()}
-                  </p>
+                  </AutorTime>
                 </Autor>
 
                 {isLogged && (
@@ -101,11 +93,6 @@ const Autor = styled.h2`
   color: #ff923c;
   position: relative;
   font-size: calc(1rem + 0.4vw);
-
-  .autor__time {
-    color: grey;
-    font-size: calc(0.6rem + 0.4vw);
-  }
 `;
 
 const BackImage = styled.img`
@@ -119,6 +106,11 @@ const BackImage = styled.img`
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
   border: none !important;
+`;
+
+const AutorTime = styled.p`
+  color: grey;
+  font-size: calc(0.6rem + 0.4vw);
 `;
 
 const Button = styled.div`
