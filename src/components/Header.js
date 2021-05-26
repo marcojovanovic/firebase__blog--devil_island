@@ -102,6 +102,8 @@ const Wrapper = styled.div`
   position: relative;
   margin: auto;
 
+  
+
   .nav__hide {
     @media (max-width: 1100px) {
       display: none;

@@ -17,6 +17,10 @@ html {
   line-height: 1.7;
 }
 
+html, body{
+  overflow-x: hidden;
+}
+
 @media (min-width: 700px) {
   html {
     font-size: 62.5%;
@@ -27,6 +31,8 @@ body {
   background: #ffff;
   font-family: 'Montserrat', sans-serif;
   line-height: 1.5;
+
+  
 }
 ul li {
   list-style: none;
