@@ -16,8 +16,8 @@ const BlogPostTitle = styled.h2`
   font-weight: 100;
   display: inline-block;
   border-bottom: 2px dotted #ff923c;
-  padding: 2rem 0 3rem 0;
-  width:25%;
+  padding: 2rem 0 3rem 3rem;
+  width:22%;
 
     @media (max-width: 1200px) {
      font-size:calc(2rem + 2vw);

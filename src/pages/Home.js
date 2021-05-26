@@ -78,6 +78,10 @@ const BlogTitle = styled.h2`
   @media (max-width: 700px) {
     top: 9rem;
   }
+
+  @media (max-width: 400px) {
+    top: 6rem;
+  }
 `;
 
 const BlogSome = styled.div`
@@ -85,7 +89,7 @@ const BlogSome = styled.div`
 @media (max-width: 1250px) {
      height: 55vh;
   }
-@media (max-width: 900px) {
+@media (max-width: 960px) {
      min-height: 75vh;
   }
 
@@ -109,6 +113,10 @@ const BlogText = styled.p`
 
   @media (max-width: 700px) {
     top: 15rem;
+  }
+
+  @media (max-width: 400px) {
+    top: 12rem;
   }
 `;
 
@@ -216,9 +224,13 @@ const BlogPostContent = styled.div`
     margin-right: 50%;
   }
 
+  @media (max-width: 375px) {
+    width: 50%;
+    margin-right: 45%;
+  }
   @media (max-width: 350px) {
     width: 50%;
-    margin-right: 50%;
+    margin-right: 55%;
   }
 `;
 

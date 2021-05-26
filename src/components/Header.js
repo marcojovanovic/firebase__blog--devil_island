@@ -47,7 +47,7 @@ function Header(props) {
             <NavImg src="assets/devilLogo.png" alt="" />
             <NavSpan>Islands </NavSpan>
             <LineImg
-              src="https://www.shreejichikki.com/wp-content/uploads/2014/04/vertical-line.png"
+              src="https://i.ibb.co/18QGGvP/draw-line-1.png"
               alt=""
             />
           </NavbarLogoContent>
@@ -181,11 +181,12 @@ const NavItem = styled.li`
 `;
 
 const NavImg = styled.img`
-  width: clamp(15%, 12% + 3vw, 12%);
+  width: clamp(10%, 11%, 13%);
 `;
 const LineImg = styled.img`
-  height: 25%;
-  max-width: 20%;
+  height: 10%;
+  max-width: 12%;
+  transform: translateX(50%);
 `;
 
 const Button = styled.button`
