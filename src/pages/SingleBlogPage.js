@@ -150,7 +150,6 @@ const SideImg = styled.img`
   min-width: 50%;
   text-align: center;
 
-
   @media (max-width: 1120px) {
     display: none;
   }
@@ -159,7 +158,6 @@ const SideImg = styled.img`
 const ArticleTitle = styled.h2`
   font-size: 2rem;
   text-align: center;
-  
 `;
 
 const Title = styled.div`
@@ -248,7 +246,6 @@ const SideSingleImg = styled.img`
   height: 20rem;
   object-fit: cover;
 
-
   @media (max-width: 1120px) {
     height: 40rem;
   }
@@ -306,7 +303,6 @@ const Navigation = styled.div`
     margin: auto;
   }
   @media (max-width: 50rem) {
-   
     width: 90%;
     display: block;
     margin: auto;

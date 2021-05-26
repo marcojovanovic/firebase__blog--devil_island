@@ -39,7 +39,7 @@ function Home() {
                   <ButtonContainer>
                     <Button
                       onClick={() =>
-                        prompt(
+                        alert(
                           'Post ce biti obrisan ?',
                           database.collection('blogPost').doc(id).delete()
                         )
@@ -85,16 +85,13 @@ const BlogTitle = styled.h2`
 `;
 
 const BlogSome = styled.div`
-
-@media (max-width: 1250px) {
-     height: 55vh;
+  @media (max-width: 1250px) {
+    height: 55vh;
   }
-@media (max-width: 960px) {
-     min-height: 75vh;
+  @media (max-width: 960px) {
+    min-height: 75vh;
   }
-
-
-`
+`;
 
 const BlogText = styled.p`
   position: absolute;

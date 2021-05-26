@@ -24,15 +24,12 @@ const HomeContainer = styled.div`
   padding: 1.5rem 8rem;
   background: #e6e6e6;
 
-
   @media screen and (max-width: 750px) {
-  & {
-     padding:1rem;
-     margin:auto;
-    
+    & {
+      padding: 1rem;
+      margin: auto;
+    }
   }
-}
-
 `;
 
 export default LandingPage;

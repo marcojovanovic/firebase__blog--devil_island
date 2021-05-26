@@ -46,10 +46,7 @@ function Header(props) {
           <NavbarLogoContent>
             <NavImg src="assets/devilLogo.png" alt="" />
             <NavSpan>Islands </NavSpan>
-            <LineImg
-              src="https://i.ibb.co/18QGGvP/draw-line-1.png"
-              alt=""
-            />
+            <LineImg src="https://i.ibb.co/18QGGvP/draw-line-1.png" alt="" />
           </NavbarLogoContent>
         </Link>
 
@@ -76,7 +73,13 @@ function Header(props) {
           </NavItem>
         )}
         <NavItem className="nav__hide">
-          <Link to="/createBlog">
+          <Link
+            to={{
+              pathname:
+                'https://github.com/marcojovanovic/firebase__blog--devil_island',
+            }}
+            target="_blank"
+          >
             <NavLink>
               <VscGithubInverted size={30} />
               <p>Dokumentacija</p>
@@ -101,8 +104,6 @@ const Wrapper = styled.div`
   padding: 2rem 0;
   position: relative;
   margin: auto;
-
-  
 
   .nav__hide {
     @media (max-width: 1100px) {

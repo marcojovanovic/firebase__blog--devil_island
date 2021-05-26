@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
 function Notification() {
-
   return (
     <>
       <ErrorMessage>Prijava nije dobro popunjena</ErrorMessage>
