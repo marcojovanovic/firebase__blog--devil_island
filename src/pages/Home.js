@@ -86,7 +86,7 @@ const BlogSome = styled.div`
      height: 55vh;
   }
 @media (max-width: 900px) {
-     height: 65vh;
+     min-height: 75vh;
   }
 
 
