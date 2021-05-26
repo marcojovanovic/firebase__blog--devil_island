@@ -17,11 +17,13 @@ const BlogPostTitle = styled.h2`
   display: block;
   border-bottom: 2px dotted #ff923c;
   padding: 2rem 0 3rem 0;
+    width:25%;
 `;
 
 const BlogPostContent = styled.div`
   background: #e6e6e6;
   padding: calc(6rem + 0.5vw);
+
 `;
 
 export default BlogTitle;

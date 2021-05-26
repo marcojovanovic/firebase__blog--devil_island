@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DevilContext } from '../context';
 import { useParams, Link, useHistory } from 'react-router-dom';
 import { database } from '../firebase/config';
@@ -7,9 +7,31 @@ import { MdArrowBack } from 'react-icons/md/';
 
 function SingleBlogPage() {
   let { id } = useParams();
-  const { singleBlog, setSingleBlog } = React.useContext(DevilContext);
+  const {
+    singleBlog,
+    setSingleBlog,
+    sideBlogs,
+    setSideBlogs,
+  } = React.useContext(DevilContext);
 
   const history = useHistory();
+
+  useEffect(() => {
+    const unsub = database
+      .collection('blogPost')
+      .orderBy('timestamp', 'asc')
+      .onSnapshot((snapshot) => {
+        let documents = [];
+
+        snapshot.forEach((doc) => {
+          documents.push({ ...doc.data(), id: doc.id });
+        });
+
+        setSideBlogs(documents);
+      });
+
+    return () => unsub();
+  }, []);
 
   useEffect(() => {
     database
@@ -20,45 +42,6 @@ function SingleBlogPage() {
         setSingleBlog(snap.data());
       });
   }, [id]);
-
-  const devilArticles = [
-    {
-      text: 'Istorija "bele" plaže',
-      onClick: () => history.push('/singleBlogPage/IwPzzupyD8ShCIleetlX'),
-    },
-    {
-      text: 'Kako pronaći naselja',
-      onClick: () => history.push('/singleBlogPage/SlwSkfsModZTHWstsdsD'),
-    },
-    {
-      text: 'Hoteli',
-      onClick: () => history.push('/singleBlogPage/9Yvvbnr2SoQ3wc84GeHY'),
-    },
-    {
-      text: 'Najopasnije obale Đavoljeg ostrva',
-      onClick: () => history.push('/singleBlogPage/iLv5tVpw0waKK0d8K7wg'),
-    },
-    {
-      text: 'Najstarije pećine Azije',
-      onClick: () => history.push('/singleBlogPage/skGfuaJ3oqc4yqg2uXjf'),
-    },
-    {
-      text: 'Ostrvo sa najtoplijom vodom u okeanu',
-      onClick: () => history.push('/singleBlogPage/1GJmlFpcLQdtMFs1KYWR'),
-    },
-    {
-      text: 'Koralni grebeni',
-      onClick: () => history.push('/singleBlogPage/Q8duDrH0Jou4gTCTYRe4'),
-    },
-    {
-      text: 'Naš utisak sa plaže',
-      onClick: () => history.push('/singleBlogPage/k4ZYR6p6KzctytheLYeN'),
-    },
-    {
-      text: 'Gde se nalaze Đavolja ostrva',
-      onClick: () => history.push('/singleBlogPage/fXdExvzHdohKWdEXiygo'),
-    },
-  ];
 
   const { autor, sadrzaj, naslov, imgURL } = singleBlog;
 
@@ -78,7 +61,7 @@ function SingleBlogPage() {
           <Navigation>
             <Link to="/">
               <SideBlogLink>
-                <MdArrowBack size={30} /> Povratak na glavnu stranu
+                <MdArrowBack size={50} />
               </SideBlogLink>
             </Link>
             <SideLine></SideLine>
@@ -86,11 +69,17 @@ function SingleBlogPage() {
             <ArticleTitle>Povezani članci</ArticleTitle>
             <SideImg src="/assets/sideLine.png" />
 
-            {devilArticles.map((item) => (
-              <ListItem button key={item.text} onClick={item.onClick}>
-                {item.text}
-              </ListItem>
-            ))}
+            {sideBlogs.map((item) => {
+              return (
+                <SideSingleTitle
+                  key={item.id}
+                  onClick={() => history.push(`/singleBlogPage/${item.id}`)}
+                >
+                  <SideSingleImg src={item.imgURL} alt="" />
+                  <SideTitleTitle>{item.naslov}</SideTitleTitle>
+                </SideSingleTitle>
+              );
+            })}
           </Navigation>
         </SideContent>
 
@@ -143,7 +132,7 @@ const SingleBlogItem = styled.div`
 
 const ImageSide = styled.img`
   width: 100%;
-  height: 230vh;
+  height: 365vh;
   object-fit: cover;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
     url(${(props) => (props.side ? props.side : 'green')});
@@ -160,12 +149,17 @@ const SideBlogImg = styled.div`
 const SideImg = styled.img`
   min-width: 50%;
   text-align: center;
+
+
+  @media (max-width: 1120px) {
+    display: none;
+  }
 `;
 
 const ArticleTitle = styled.h2`
   font-size: 2rem;
   text-align: center;
-  padding-top: 3rem;
+  
 `;
 
 const Title = styled.div`
@@ -173,6 +167,7 @@ const Title = styled.div`
   font-weight: bolder;
   letter-spacing: 0.5rem;
   color: white;
+  text-align: center;
 `;
 
 const Main = styled.div`
@@ -196,8 +191,15 @@ const SideLine = styled.div`
   margin-bottom: 2.5rem;
 `;
 
+const SideSingleTitle = styled.div`
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+`;
+
 const Content = styled.div`
-  flex: 0.7;
+  flex: 0.67;
   padding-left: 2rem;
   color: #333;
   font-size: 1.8rem;
@@ -241,18 +243,30 @@ const Content = styled.div`
   }
 `;
 
-const ListItem = styled.li`
-  list-style: none;
-  color: #ff923c;
-  font-size: 1.7rem;
-  margin: 4rem 0;
-  cursor: pointer;
-  transition: 0.3s ease-in;
+const SideSingleImg = styled.img`
+  width: 100%;
+  height: 20rem;
+  object-fit: cover;
 
-  &:hover {
-    color: #999;
-    transform: translateX(3rem);
+
+  @media (max-width: 1120px) {
+    height: 40rem;
   }
+  @media (max-width: 700px) {
+    height: 20rem;
+  }
+  @media (max-width: 600px) {
+    height: 25rem;
+  }
+
+  @media (max-width: 500px) {
+    height: 18rem;
+  }
+`;
+
+const SideTitleTitle = styled.h2`
+  text-align: center;
+  margin-bottom: 2rem;
 `;
 
 const Contributor = styled.div`
@@ -280,40 +294,29 @@ const AutorInfo = styled.h1`
 `;
 
 const Navigation = styled.div`
-  margin-top: 14rem;
+  margin-top: 10vh;
   padding: 2rem;
-  flex: 0.2;
+  flex: 0.26;
   box-shadow: -1px 1px 1px 1px #9999;
 
   @media (max-width: 70rem) {
     padding-top: 2rem;
-    width: 80%;
+    width: 100%;
     display: block;
     margin: auto;
   }
   @media (max-width: 50rem) {
-    padding-right: 5rem;
-    width: 70%;
+   
+    width: 90%;
     display: block;
     margin: auto;
   }
-
-  @media (max-width: 40rem) {
-    margin-right: 8rem;
-    width: 50%;
-    display: block;
-  }
 `;
 
-const SideBlogLink = styled.p`
+const SideBlogLink = styled.div`
   color: #333;
-  text-align: center;
-  font-size: 1.8rem;
-  cursor: pointer;
-  font-weight: bold;
-  padding-bottom: 1rem;
-  display: flex;
-  align-items: center;
+  display: block;
+  margin-left: 40%;
   transition: 0.3s ease-in;
 
   &:hover {

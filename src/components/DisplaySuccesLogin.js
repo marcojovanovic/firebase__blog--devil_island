@@ -11,7 +11,7 @@ function DisplaySuccesLogin() {
 
 const LoginMessage = styled.h5`
   color: white;
-  font-size: 1.7rem;
+  font-size: 1.2rem;
 `;
 
 export default DisplaySuccesLogin;

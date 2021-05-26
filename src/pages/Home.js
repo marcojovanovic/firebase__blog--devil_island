@@ -10,6 +10,8 @@ import styled from 'styled-components';
 function Home() {
   const { isLogged, blogCollection } = React.useContext(DevilContext);
 
+
+
   return (
     <>
       {blogCollection &&

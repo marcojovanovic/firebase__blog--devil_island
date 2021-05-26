@@ -32,6 +32,8 @@ const DevilProvider = ({ children }) => {
   });
 
   const [blogCollection, setBlogCollection] = useState('');
+  
+  const [sideBlogs, setSideBlogs] = useState([]);
 
 
   // pratimo da li je user ulogovan ili ne
@@ -137,6 +139,8 @@ const DevilProvider = ({ children }) => {
         handleSubmitBlog,
         error,
         setError,
+        sideBlogs,
+        setSideBlogs
        
       }}
     >
