@@ -28,6 +28,7 @@ function SignUp(props) {
         setUser(authObj);
 
         history.push('/');
+        window.location.reload()
       })
       .catch((err) => {
         setError(err.message);

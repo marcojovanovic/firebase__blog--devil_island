@@ -20,8 +20,8 @@ function LandingPage() {
 const HomeContainer = styled.div`
   display: grid;
   grid-gap: 4rem;
-  grid-template-columns: repeat(auto-fill, minmax(38rem, 1fr));
-  padding: 1.5rem 8rem;
+  grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
+  padding: 1.5rem 8rem 14rem 8rem;
   background: #e6e6e6;
 
   @media screen and (max-width: 750px) {
