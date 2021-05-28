@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Header, Footer, BlogTitle } from '../components';
+import { Navbar, Footer, BlogTitle } from '../components';
 import Home from './Home';
 
 function LandingPage() {
   return (
     <>
-      <Header />
+      <Navbar />
       <BlogTitle />
       <HomeContainer>
         <Home />

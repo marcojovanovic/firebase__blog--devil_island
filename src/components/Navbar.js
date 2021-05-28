@@ -6,9 +6,9 @@ import styled from 'styled-components';
 import { GoPlus } from 'react-icons/go';
 import { VscGithubInverted } from 'react-icons/vsc';
 import { ToastContainer, toast } from 'react-toastify';
-import { DisplaySuccesLogin } from '../components';
+import { DisplaySuccesLogin } from '.';
 
-function Header(props) {
+function Navbar(props) {
   const { isLogged, setUser, username, user } = React.useContext(DevilContext);
 
   let { history } = props;
@@ -232,4 +232,4 @@ const NavLog = styled.div`
   }
 `;
 
-export default withRouter(Header);
+export default withRouter(Navbar);

@@ -30,7 +30,7 @@ function SignUp(props) {
       .then((authObj) => {
         setUser(authObj);
 
-        history.push('/login');
+        history.push('/');
       })
       .catch((err) => {
         setError(err.message);
