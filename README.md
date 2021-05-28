@@ -35,20 +35,28 @@
 ## Dokumentacija
 
 [firebase auth](https://firebase.google.com/docs/auth/web/start)
+
 [firebase manage users](https://firebase.google.com/docs/auth/web/manage-users)
+
 [firebase user token](https://firebase.google.com/docs/auth/users)
+
 [firebase auth email and password](https://firebase.google.com/docs/auth/web/email-link-auth)
+
 [firebase auth sign out](https://firebase.google.com/docs/auth/web/custom-auth)
+
 [firebase firestore basic](https://firebase.google.com/docs/firestore/data-model)
+
 [Private routes](https://ui.dev/react-router-v5-protected-routes-authentication/)
+
 [firebase firestore work with data](https://firebase.google.com/docs/firestore/query-data/get-data)
+
 [firebase firestore order and limit ](https://firebase.google.com/docs/firestore/query-data/order-limit-data)
+
 [firebase firstore data query](https://firebase.google.com/docs/firestore/query-data/queries)
 
 [firebase firstore security](https://firebase.google.com/docs/firestore/security/rules-structure)
 
 [css filters](https://firebase.google.com/docs/firestore/security/rules-structure)
-
 
 [styled components](https://styled-components.com/)
 
@@ -69,6 +77,8 @@ Navikao sam veoma na rad sa Context API, da provlaciti props iz komponente u kom
 # Firebase 
 
 Neko vreme radim male projekte sa Firebase i moram da priznam da mi se dopada i da sam je savladao, no moj utisak je da kada se radi veliki projekti jako je tesko uspostaviti relacione odnose izmedju tabela i podataka. Tehnicki firebase to moze, ali treba dosta akrobacija izvesti i malo nategnuti. Za potrebe Bloga, moze da bude odlicno iii Forme dakle za sve moje potrebe, ali mislim da na nekom industrijskom levelu, to treba raditi sa MongoDB ili SQL
+
+Sa druge strane raditi Auth je pravo zadovoljstvo, dosta toga vec firebase radi, jedan od najlaksih nacina kako se moze postaviti osnovni auth, ali verujem da u praksi ima jos bar nekoliko stvari na koje treba obratiti paznju koje ja nisam uzeo u obzir
 
 
 # Folder order
